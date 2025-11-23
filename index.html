@@ -4,55 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhoneStore</title>
-
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+    <header class="navbar">
         <div class="logo">
-            <span class="icon">📱</span> <h2>PhoneStore</h2>
+            <span class="icon">📱</span> PhoneStore
         </div>
 
-        <input type="text" id="searchInput" placeholder="Buscar teléfonos...">
+        <input type="text" id="buscar" placeholder="Buscar teléfonos..." />
 
-        <div class="carrito-icon">
+        <div class="cart">
             🛒
         </div>
-    </nav>
+    </header>
 
-    <div class="container">
+    <main class="container">
 
         <!-- FILTROS -->
         <aside class="filtros">
-            <h3>Filtros</h3>
+            <h2>Filtros</h2>
 
-            <label>Ordenar por</label>
+            <label for="ordenar">Ordenar por</label>
             <select id="ordenar">
                 <option value="destacados">Destacados</option>
-                <option value="precio_mayor">Precio mayor</option>
-                <option value="precio_menor">Precio menor</option>
+                <option value="precioAsc">Precio: Menor a Mayor</option>
+                <option value="precioDesc">Precio: Mayor a Menor</option>
             </select>
 
-            <h4>Marca</h4>
-            <div class="checkboxes">
-                <label><input type="checkbox" value="Apple"> Apple</label>
-                <label><input type="checkbox" value="Samsung"> Samsung</label>
-                <label><input type="checkbox" value="Google"> Google</label>
-                <label><input type="checkbox" value="OnePlus"> OnePlus</label>
-            </div>
+            <h3>Marca</h3>
+
+            <label><input type="checkbox" class="marca" value="Apple"> Apple</label>
+            <label><input type="checkbox" class="marca" value="Samsung"> Samsung</label>
+            <label><input type="checkbox" class="marca" value="Google"> Google</label>
+            <label><input type="checkbox" class="marca" value="OnePlus"> OnePlus</label>
         </aside>
 
         <!-- PRODUCTOS -->
-        <main class="productos">
-            <h2>Todos los Productos</h2>
-            <p>8 productos disponibles</p>
+        <section class="productos">
+            <h1>Todos los Productos</h1>
+            <p id="cantidad"></p>
 
-            <div id="productosContainer" class="grid"></div>
-        </main>
-    </div>
+            <div id="listaProductos" class="grid"></div>
+        </section>
 
-<script src="script.js"></script>
+    </main>
+
+    <script src="script.js"></script>
 </body>
+</html>
+
 </html>
