@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Revista digital con artículos sobre tecnología, estilo de vida y creatividad.">
+  <title>Lumina — Revista Digital</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .font-heading { font-family: 'DM Serif Display', Georgia, serif; }
+    .font-body { font-family: 'Outfit', sans-serif; }
+    .article-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .article-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .fade-in { animation: fadeIn 0.6s ease both; }
+    .fade-in-delay-1 { animation-delay: 0.15s; }
+    .fade-in-delay-2 { animation-delay: 0.3s; }
+    .fade-in-delay-3 { animation-delay: 0.45s; }
+    .fade-in-delay-4 { animation-delay: 0.6s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; transition: width 0.3s ease; }
+    .nav-link:hover::after { width: 100%; }
+    .hero-gradient { background: linear-gradient(135deg, var(--bg-color) 0%, color-mix(in srgb, var(--bg-color) 85%, var(--accent-color)) 100%); }
+    .category-pill { transition: background 0.2s ease, color 0.2s ease; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body overflow-auto" style="background-color: #FAF7F2; color: #2D2A26;">
+  <div id="app" class="w-full h-full" style="background-color: #FAF7F2;"><!-- NAV -->
+   <header class="w-full border-b" style="border-color: #E8E2D9; background: rgba(250,247,242,0.95); backdrop-filter: blur(10px);" id="site-header">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center font-heading text-white text-lg" style="background-color: #C45D3E;" id="logo-icon">
+       L
+      </div><span class="font-heading text-xl" id="nav-title" style="color: #2D2A26;">Lumina</span>
+     </div>
+     <nav class="hidden md:flex items-center gap-7 text-sm font-medium" id="nav-links"><a href="#inicio" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Inicio</a> <a href="#articulos" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Artículos</a> <a href="#sobre" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Sobre Nosotros</a> <a href="#contacto" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Contacto</a>
+     </nav><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg" onclick="toggleMobileMenu()"> <i data-lucide="menu" style="width:22px;height:22px;color:#2D2A26;"></i> </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-4 space-y-3 text-sm font-medium"><a href="#inicio" class="block py-2" style="color: #2D2A26;">Inicio</a> <a href="#articulos" class="block py-2" style="color: #2D2A26;">Artículos</a> <a href="#sobre" class="block py-2" style="color: #2D2A26;">Sobre Nosotros</a> <a href="#contacto" class="block py-2" style="color: #2D2A26;">Contacto</a>
+    </div>
+   </header><!-- HERO -->
+   <section id="inicio" class="w-full hero-gradient fade-in" style="--bg-color:#FAF7F2;--accent-color:#C45D3E;">
+    <div class="max-w-6xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+     <div><span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-5" style="background-color: #C45D3E; color: #FAF7F2;" id="hero-badge">ARTÍCULO DESTACADO</span>
+      <h1 class="font-heading text-4xl md:text-5xl leading-tight mb-5" id="hero-title" style="color: #2D2A26;">El futuro del diseño digital en la era creativa</h1>
+      <p class="text-lg leading-relaxed mb-7 opacity-80" id="hero-excerpt" style="color: #2D2A26;">Exploramos cómo las nuevas herramientas están transformando la manera en que creamos, colaboramos y damos vida a nuestras ideas.</p><button class="px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90" style="background-color: #C45D3E; color: #FAF7F2;" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'})"> Leer más <span class="ml-1">→</span> </button>
+     </div>
+     <div class="rounded-2xl overflow-hidden aspect-[4/3]" style="background: linear-gradient(145deg, #C45D3E 0%, #D4896E 50%, #E8C4A0 100%);">
+      <div class="w-full h-full flex items-center justify-center">
+       <svg width="120" height="120" viewbox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="50" stroke="#FAF7F2" stroke-width="2" opacity="0.4" /><circle cx="60" cy="60" r="30" stroke="#FAF7F2" stroke-width="2" opacity="0.6" /><circle cx="60" cy="60" r="10" fill="#FAF7F2" opacity="0.8" />
+       </svg>
+      </div>
+     </div>
+    </div>
+   </section><!-- TAGLINE BAR -->
+   <div class="w-full py-4 text-center" style="background-color: #2D2A26;">
+    <p class="text-sm tracking-widest font-medium uppercase" id="tagline-bar" style="color: #FAF7F2;">Ideas que inspiran · Historias que conectan</p>
+   </div><!-- ARTICLES -->
+   <section id="articulos" class="w-full py-16">
+    <div class="max-w-6xl mx-auto px-5">
+     <div class="flex items-center justify-between mb-10">
+      <h2 class="font-heading text-3xl" style="color: #2D2A26;">Últimos Artículos</h2>
+      <div class="hidden sm:flex gap-2" id="category-filters"><button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#C45D3E;color:#FAF7F2;" onclick="filterArticles('all',this)">Todos</button> <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#E8E2D9;color:#2D2A26;" onclick="filterArticles('tech',this)">Tecnología</button> <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#E8E2D9;color:#2D2A26;" onclick="filterArticles('vida',this)">Estilo de Vida</button> <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#E8E2D9;color:#2D2A26;" onclick="filterArticles('creatividad',this)">Creatividad</button>
+      </div>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7" id="articles-grid">
+     </div>
+    </div>
+   </section><!-- NEWSLETTER -->
+   <section class="w-full py-16" style="background-color: #2D2A26;">
+    <div class="max-w-xl mx-auto px-5 text-center">
+     <h2 class="font-heading text-3xl mb-3" style="color: #FAF7F2;">Suscríbete al boletín</h2>
+     <p class="mb-7 opacity-70" style="color: #FAF7F2;">Recibe los mejores artículos directamente en tu bandeja de entrada, cada semana.</p>
+     <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3"><label for="email-input" class="sr-only">Correo electrónico</label> <input id="email-input" type="email" placeholder="tu@email.com" required class="flex-1 px-4 py-3 rounded-lg text-sm outline-none" style="background-color: #3D3A36; color: #FAF7F2; border: 1px solid #5A5650;"> <button type="submit" class="px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90" style="background-color: #C45D3E; color: #FAF7F2;">Suscribirme</button>
+     </form>
+     <p id="subscribe-msg" class="mt-4 text-sm hidden" style="color: #D4896E;"></p>
+    </div>
+   </section><!-- ABOUT -->
+   <section id="sobre" class="w-full py-16">
+    <div class="max-w-4xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+     <div class="rounded-2xl aspect-square flex items-center justify-center" style="background: linear-gradient(135deg, #E8E2D9 0%, #D4C5B0 100%);">
+      <svg width="100" height="100" viewbox="0 0 100 100" fill="none">
+       <rect x="15" y="20" width="30" height="60" rx="4" stroke="#C45D3E" stroke-width="2.5" /><rect x="55" y="30" width="30" height="50" rx="4" stroke="#C45D3E" stroke-width="2.5" /><line x1="22" y1="35" x2="38" y2="35" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="22" y1="42" x2="38" y2="42" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="22" y1="49" x2="33" y2="49" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="62" y1="45" x2="78" y2="45" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="62" y1="52" x2="78" y2="52" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" />
+      </svg>
+     </div>
+     <div>
+      <h2 class="font-heading text-3xl mb-5" style="color: #2D2A26;">Sobre Nosotros</h2>
+      <p class="leading-relaxed opacity-80 mb-5" id="about-text" style="color: #2D2A26;">Somos un equipo apasionado por compartir ideas, tendencias y reflexiones sobre tecnología, creatividad y estilo de vida. Nuestro objetivo es inspirarte con contenido original y de calidad.</p>
+      <div class="flex gap-8">
+       <div>
+        <span class="font-heading text-2xl block" style="color: #C45D3E;">150+</span><span class="text-xs opacity-60">Artículos</span>
+       </div>
+       <div>
+        <span class="font-heading text-2xl block" style="color: #C45D3E;">12K</span><span class="text-xs opacity-60">Lectores</span>
+       </div>
+       <div>
+        <span class="font-heading text-2xl block" style="color: #C45D3E;">3</span><span class="text-xs opacity-60">Años</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CONTACT -->
+   <section id="contacto" class="w-full py-16" style="background-color: #F0EBE3;">
+    <div class="max-w-xl mx-auto px-5">
+     <h2 class="font-heading text-3xl mb-3 text-center" style="color: #2D2A26;">Contacto</h2>
+     <p class="text-center mb-8 opacity-70" style="color: #2D2A26;">¿Tienes una idea o colaboración en mente? Escríbenos.</p>
+     <form onsubmit="handleContact(event)" class="space-y-4">
+      <div><label for="contact-name" class="block text-sm font-medium mb-1" style="color: #2D2A26;">Nombre</label> <input id="contact-name" type="text" required class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#fff;border:1px solid #E8E2D9;color:#2D2A26;">
+      </div>
+      <div><label for="contact-email" class="block text-sm font-medium mb-1" style="color: #2D2A26;">Correo</label> <input id="contact-email" type="email" required class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#fff;border:1px solid #E8E2D9;color:#2D2A26;">
+      </div>
+      <div><label for="contact-msg" class="block text-sm font-medium mb-1" style="color: #2D2A26;">Mensaje</label> <textarea id="contact-msg" rows="4" required class="w-full px-4 py-3 rounded-lg text-sm outline-none resize-none" style="background:#fff;border:1px solid #E8E2D9;color:#2D2A26;"></textarea>
+      </div><button type="submit" class="w-full py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90" style="background-color:#C45D3E;color:#FAF7F2;">Enviar mensaje</button>
+      <p id="contact-success" class="text-sm text-center hidden" style="color:#C45D3E;"></p>
+     </form>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="w-full py-10" style="background-color: #2D2A26;">
+    <div class="max-w-6xl mx-auto px-5">
+     <div class="grid sm:grid-cols-3 gap-8 mb-8">
+      <div><span class="font-heading text-lg" id="footer-brand" style="color: #FAF7F2;">Lumina</span>
+       <p class="text-sm mt-2 opacity-50" style="color: #FAF7F2;">Contenido original que inspira.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold text-sm mb-3" style="color: #FAF7F2;">Secciones</h4>
+       <div class="space-y-2 text-sm opacity-60" style="color: #FAF7F2;"><a href="#inicio" class="block hover:opacity-100">Inicio</a> <a href="#articulos" class="block hover:opacity-100">Artículos</a> <a href="#sobre" class="block hover:opacity-100">Sobre Nosotros</a>
+       </div>
+      </div>
+      <div>
+       <h4 class="font-semibold text-sm mb-3" style="color: #FAF7F2;">Legal</h4>
+       <div class="space-y-2 text-sm opacity-60" style="color: #FAF7F2;"><a href="#" class="block hover:opacity-100" onclick="showPolicy('privacy')">Política de Privacidad</a> <a href="#" class="block hover:opacity-100" onclick="showPolicy('terms')">Términos de Uso</a> <a href="#" class="block hover:opacity-100" onclick="showPolicy('cookies')">Política de Cookies</a>
+       </div>
+      </div>
+     </div>
+     <div class="border-t pt-6 text-center text-xs opacity-40" style="border-color: #5A5650; color: #FAF7F2;" id="footer-text">
+      © 2024 Lumina. Todos los derechos reservados.
+     </div>
+    </div>
+   </footer><!-- POLICY MODAL -->
+   <div id="policy-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-5" style="background:rgba(0,0,0,0.6);" onclick="if(event.target===this)closePolicyModal()">
+    <div class="w-full max-w-2xl max-h-[80%] rounded-2xl overflow-auto p-8" style="background:#FAF7F2;">
+     <div class="flex justify-between items-center mb-5">
+      <h3 class="font-heading text-2xl" id="policy-title" style="color:#2D2A26;"></h3><button onclick="closePolicyModal()" class="p-1 rounded-lg hover:opacity-70"><i data-lucide="x" style="width:20px;height:20px;color:#2D2A26;"></i></button>
+     </div>
+     <div id="policy-content" class="text-sm leading-relaxed opacity-80" style="color:#2D2A26;"></div>
+    </div>
+   </div>
+  </div>
+  <script>
+  // Color variables for inline handlers
+  let accentColor = '#C45D3E';
+  let textColor = '#2D2A26';
+  let bgColor = '#FAF7F2';
+  let surfaceColor = '#E8E2D9';
+  let secondaryAction = '#5A5650';
+
+  const articles = [
+    { id:1, cat:'tech', title:'Inteligencia artificial y creatividad: aliados inesperados', excerpt:'Cómo la IA está potenciando el proceso creativo en lugar de reemplazarlo.', date:'15 Dic 2024', read:'5 min' },
+    { id:2, cat:'vida', title:'Minimalismo digital: menos pantallas, más vida', excerpt:'Estrategias para reducir el ruido digital y recuperar tu atención.', date:'12 Dic 2024', read:'4 min' },
+    { id:3, cat:'creatividad', title:'El poder del boceto rápido en el diseño', excerpt:'Por qué los mejores diseñadores siguen empezando con lápiz y papel.', date:'10 Dic 2024', read:'3 min' },
+    { id:4, cat:'tech', title:'Tendencias web que dominarán el 2025', excerpt:'Desde micro-animaciones hasta interfaces conversacionales.', date:'8 Dic 2024', read:'6 min' },
+    { id:5, cat:'vida', title:'Rutinas matutinas de personas altamente creativas', excerpt:'Hábitos simples que transforman tu productividad y bienestar.', date:'5 Dic 2024', read:'4 min' },
+    { id:6, cat:'creatividad', title:'Fotografía con smartphone: guía esencial', excerpt:'Técnicas profesionales que puedes aplicar con tu teléfono.', date:'2 Dic 2024', read:'7 min' },
+  ];
+
+  const catColors = { tech:'#3B7DD8', vida:'#2DA06D', creatividad:'#C45D3E' };
+  const catLabels = { tech:'Tecnología', vida:'Estilo de Vida', creatividad:'Creatividad' };
+  let currentFilter = 'all';
+  let expandedArticle = null;
+
+  function renderArticles(filter) {
+    const grid = document.getElementById('articles-grid');
+    grid.innerHTML = '';
+    const filtered = filter === 'all' ? articles : articles.filter(a => a.cat === filter);
+    filtered.forEach((a, i) => {
+      const card = document.createElement('div');
+      card.className = `article-card rounded-2xl overflow-hidden cursor-pointer fade-in fade-in-delay-${i % 4}`;
+      card.dataset.cat = a.cat;
+      card.style.background = surfaceColor;
+      card.onclick = () => toggleArticle(a.id);
+      card.innerHTML = `
+        <div class="h-40 flex items-center justify-center" style="background:linear-gradient(135deg, ${catColors[a.cat]}22, ${catColors[a.cat]}44);">
+          <span class="font-heading text-5xl" style="color:${catColors[a.cat]};opacity:0.3;">${a.id}</span>
+        </div>
+        <div class="p-5">
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide mb-3" style="background:${catColors[a.cat]}20;color:${catColors[a.cat]};">${catLabels[a.cat]}</span>
+          <h3 class="font-heading text-lg leading-snug mb-2" style="color:${textColor};">${a.title}</h3>
+          <p class="text-sm opacity-70 mb-4" style="color:${textColor};">${a.excerpt}</p>
+          <div class="flex items-center justify-between text-xs opacity-50" style="color:${textColor};">
+            <span>${a.date}</span><span>${a.read} lectura</span>
+          </div>
+          <div id="article-body-${a.id}" class="hidden mt-4 pt-4 text-sm leading-relaxed opacity-80" style="border-top:1px solid ${textColor}20;color:${textColor};">
+            Este es un artículo completo sobre "${a.title.toLowerCase()}". Aquí encontrarás información detallada, análisis profundo y consejos prácticos que puedes aplicar en tu día a día. El contenido ha sido creado con el objetivo de aportar valor real a nuestros lectores.
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function toggleArticle(id) {
+    const el = document.getElementById(`article-body-${id}`);
+    if (!el) return;
+    if (expandedArticle && expandedArticle !== id) {
+      const prev = document.getElementById(`article-body-${expandedArticle}`);
+      if (prev) prev.classList.add('hidden');
+    }
+    el.classList.toggle('hidden');
+    expandedArticle = el.classList.contains('hidden') ? null : id;
+  }
+
+  function filterArticles(cat, btn) {
+    currentFilter = cat;
+    document.querySelectorAll('#category-filters button').forEach(b => {
+      b.style.backgroundColor = surfaceColor;
+      b.style.color = textColor;
+    });
+    btn.style.backgroundColor = accentColor;
+    btn.style.color = bgColor;
+    renderArticles(cat);
+  }
+
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  }
+
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const msg = document.getElementById('subscribe-msg');
+    msg.textContent = '¡Gracias por suscribirte! Revisa tu correo para confirmar.';
+    msg.classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => msg.classList.add('hidden'), 4000);
+  }
+
+  function handleContact(e) {
+    e.preventDefault();
+    const msg = document.getElementById('contact-success');
+    msg.textContent = '¡Mensaje enviado con éxito! Te responderemos pronto.';
+    msg.classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => msg.classList.add('hidden'), 4000);
+  }
+
+  const policies = {
+    privacy: { title: 'Política de Privacidad', content: 'En Lumina nos comprometemos a proteger tu privacidad. Recopilamos únicamente la información necesaria para mejorar tu experiencia: correo electrónico (si te suscribes) y datos de navegación anónimos. No compartimos tu información con terceros sin tu consentimiento. Puedes solicitar la eliminación de tus datos en cualquier momento contactándonos.' },
+    terms: { title: 'Términos de Uso', content: 'Al acceder a Lumina, aceptas estos términos. El contenido publicado es propiedad de Lumina y está protegido por derechos de autor. Puedes compartir nuestros artículos citando la fuente. No está permitido reproducir contenido sin autorización. Nos reservamos el derecho de modificar estos términos en cualquier momento.' },
+    cookies: { title: 'Política de Cookies', content: 'Utilizamos cookies para mejorar tu experiencia de navegación. Las cookies esenciales permiten el funcionamiento del sitio. Las cookies analíticas nos ayudan a entender cómo usas el sitio. Puedes gestionar tus preferencias de cookies desde la configuración de tu navegador.' }
+  };
+
+  function showPolicy(type) {
+    const p = policies[type];
+    document.getElementById('policy-title').textContent = p.title;
+    document.getElementById('policy-content').textContent = p.content;
+    document.getElementById('policy-modal').classList.remove('hidden');
+  }
+  function closePolicyModal() {
+    document.getElementById('policy-modal').classList.add('hidden');
+  }
+
+  // --- ELEMENT SDK ---
+  const defaultConfig = {
+    site_title: 'Lumina',
+    site_tagline: 'Ideas que inspiran · Historias que conectan',
+    hero_title: 'El futuro del diseño digital en la era creativa',
+    hero_excerpt: 'Exploramos cómo las nuevas herramientas están transformando la manera en que creamos, colaboramos y damos vida a nuestras ideas.',
+    about_text: 'Somos un equipo apasionado por compartir ideas, tendencias y reflexiones sobre tecnología, creatividad y estilo de vida. Nuestro objetivo es inspirarte con contenido original y de calidad.',
+    footer_text: '© 2024 Lumina. Todos los derechos reservados.',
+    background_color: '#FAF7F2',
+    surface_color: '#E8E2D9',
+    text_color: '#2D2A26',
+    accent_color: '#C45D3E',
+    secondary_action_color: '#5A5650',
+    font_family: 'DM Serif Display',
+    font_size: 16
+  };
+
+  function applyConfig(config) {
+    const c = { ...defaultConfig, ...config };
+    bgColor = c.background_color;
+    surfaceColor = c.surface_color;
+    textColor = c.text_color;
+    accentColor = c.accent_color;
+    secondaryAction = c.secondary_action_color;
+
+    const app = document.getElementById('app');
+    app.style.backgroundColor = bgColor;
+
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = textColor;
+
+    // Nav
+    document.getElementById('nav-title').textContent = c.site_title;
+    document.getElementById('nav-title').style.color = textColor;
+    document.getElementById('logo-icon').style.backgroundColor = accentColor;
+    document.getElementById('logo-icon').textContent = c.site_title.charAt(0);
+    document.getElementById('site-header').style.borderColor = surfaceColor;
+
+    // Hero
+    document.getElementById('hero-title').textContent = c.hero_title;
+    document.getElementById('hero-title').style.color = textColor;
+    document.getElementById('hero-excerpt').textContent = c.hero_excerpt;
+    document.getElementById('hero-excerpt').style.color = textColor;
+    document.getElementById('hero-badge').style.backgroundColor = accentColor;
+    document.getElementById('hero-badge').style.color = bgColor;
+    document.querySelector('.hero-gradient').style.setProperty('--bg-color', bgColor);
+    document.querySelector('.hero-gradient').style.setProperty('--accent-color', accentColor);
+    document.querySelector('.hero-gradient button').style.backgroundColor = accentColor;
+    document.querySelector('.hero-gradient button').style.color = bgColor;
+
+    // Tagline
+    document.getElementById('tagline-bar').textContent = c.site_tagline;
+
+    // About
+    document.getElementById('about-text').textContent = c.about_text;
+    document.getElementById('about-text').style.color = textColor;
+
+    // Footer
+    document.getElementById('footer-brand').textContent = c.site_title;
+    document.getElementById('footer-text').textContent = c.footer_text;
+
+    // Font
+    const headingFont = `${c.font_family}, Georgia, serif`;
+    document.querySelectorAll('.font-heading').forEach(el => el.style.fontFamily = headingFont);
+
+    // Font size
+    const base = c.font_size;
+    document.querySelectorAll('p, .text-sm, .text-xs').forEach(el => {
+      if (el.classList.contains('text-xs')) el.style.fontSize = `${base * 0.75}px`;
+      else if (el.classList.contains('text-sm')) el.style.fontSize = `${base * 0.875}px`;
+      else el.style.fontSize = `${base}px`;
+    });
+
+    // Nav links style update
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.style.color = textColor;
+      l.setAttribute('onmouseover', `this.style.color='${accentColor}'`);
+      l.setAttribute('onmouseout', `this.style.color='${textColor}'`);
+    });
+    document.querySelectorAll('.nav-link').forEach(l => {
+      const after = document.createElement('style');
+      // handled via CSS variable below
+    });
+
+    // Re-render articles with updated colors
+    renderArticles(currentFilter);
+  }
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => applyConfig(config),
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['site_title', config.site_title || defaultConfig.site_title],
+      ['site_tagline', config.site_tagline || defaultConfig.site_tagline],
+      ['hero_title', config.hero_title || defaultConfig.hero_title],
+      ['hero_excerpt', config.hero_excerpt || defaultConfig.hero_excerpt],
+      ['about_text', config.about_text || defaultConfig.about_text],
+      ['footer_text', config.footer_text || defaultConfig.footer_text],
+    ])
+  });
+
+  // Initial render
+  renderArticles('all');
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0a02021770c13e',t:'MTc3NDIzMjk2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
