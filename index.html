@@ -1,1705 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" class="h-full">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portal de Productividad - Guías, consejos y estrategias para mejorar tu vida personal y profesional">
-    <meta name="keywords" content="productividad, desarrollo personal, hábitos, gestión del tiempo, motivación">
-    <meta name="author" content="Portal de Productividad">
-    <meta name="robots" content="index, follow">
-    <title>Portal de Productividad | Transforma tu Vida con Hábitos Efectivos</title>
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-." crossorigin="anonymous"></script>
-    
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <script src="/_sdk/element_sdk.js"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'heading': ['Merriweather', 'Georgia', 'serif'],
-                        'body': ['Source Sans Pro', 'Arial', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        html, body { height: 100%; margin: 0; }
-        .article-content p { margin-bottom: 1.5rem; line-height: 1.8; }
-        .article-content h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-        .article-content li { margin-bottom: 0.5rem; line-height: 1.7; }
-        .fade-in { animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .nav-link { position: relative; }
-        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: currentColor; transition: width 0.3s; }
-        .nav-link:hover::after { width: 100%; }
-    </style>
-</head>
-<body class="h-full font-body">
-    <div id="app" class="min-h-full flex flex-col bg-amber-50">
-        
-        <!-- Header -->
-        <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-50">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="flex items-center justify-between py-4">
-                    <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
-                        <div class="w-10 h-10 bg-amber-400 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-emerald-800" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h1 id="header-site-name" class="font-heading font-bold text-xl">Portal de Productividad</h1>
-                            <p id="header-tagline" class="text-amber-200 text-xs">Transforma tu vida con hábitos efectivos</p>
-                        </div>
-                    </a>
-                    
-                    <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex items-center gap-6">
-                        <a href="#" onclick="navigateTo('home')" class="nav-link text-white hover:text-amber-200 transition-colors font-semibold">Inicio</a>
-                        <a href="#" onclick="navigateTo('articles')" class="nav-link text-white hover:text-amber-200 transition-colors font-semibold">Artículos</a>
-                        <a href="#" onclick="navigateTo('about')" class="nav-link text-white hover:text-amber-200 transition-colors font-semibold">Sobre Nosotros</a>
-                        <a href="#" onclick="navigateTo('contact')" class="nav-link text-white hover:text-amber-200 transition-colors font-semibold">Contacto</a>
-                    </nav>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 hover:bg-emerald-700 rounded-lg transition-colors" aria-label="Menú">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
-                </div>
-                
-                <!-- Mobile Navigation -->
-                <nav id="mobile-menu" class="hidden md:hidden pb-4 border-t border-emerald-700 pt-4">
-                    <div class="flex flex-col gap-3">
-                        <a href="#" onclick="navigateTo('home')" class="text-white hover:text-amber-200 transition-colors font-semibold py-2">Inicio</a>
-                        <a href="#" onclick="navigateTo('articles')" class="text-white hover:text-amber-200 transition-colors font-semibold py-2">Artículos</a>
-                        <a href="#" onclick="navigateTo('about')" class="text-white hover:text-amber-200 transition-colors font-semibold py-2">Sobre Nosotros</a>
-                        <a href="#" onclick="navigateTo('contact')" class="text-white hover:text-amber-200 transition-colors font-semibold py-2">Contacto</a>
-                        <div class="border-t border-emerald-700 pt-3 mt-2">
-                            <a href="#" onclick="navigateTo('privacy')" class="text-emerald-200 hover:text-white text-sm py-1 block">Política de Privacidad</a>
-                            <a href="#" onclick="navigateTo('terms')" class="text-emerald-200 hover:text-white text-sm py-1 block">Términos y Condiciones</a>
-                            <a href="#" onclick="navigateTo('cookies')" class="text-emerald-200 hover:text-white text-sm py-1 block">Política de Cookies</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        
-        <!-- Main Content -->
-        <main id="main-content" class="flex-1">
-            <!-- Content will be loaded dynamically -->
-        </main>
-        
-        <!-- Footer -->
-        <footer class="bg-emerald-900 text-white mt-auto">
-            <div class="max-w-6xl mx-auto px-4 py-12">
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="md:col-span-2">
-                        <h3 id="footer-site-name" class="font-heading font-bold text-xl mb-4">Portal de Productividad</h3>
-                        <p class="text-emerald-200 mb-4 leading-relaxed">Tu recurso confiable para mejorar tu productividad personal y profesional. Contenido original, práctico y basado en evidencia científica.</p>
-                        <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 bg-emerald-800 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors" aria-label="Facebook">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-emerald-800 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors" aria-label="Twitter">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-emerald-800 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors" aria-label="LinkedIn">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold mb-4">Navegación</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" onclick="navigateTo('home')" class="text-emerald-200 hover:text-white transition-colors">Inicio</a></li>
-                            <li><a href="#" onclick="navigateTo('articles')" class="text-emerald-200 hover:text-white transition-colors">Artículos</a></li>
-                            <li><a href="#" onclick="navigateTo('about')" class="text-emerald-200 hover:text-white transition-colors">Sobre Nosotros</a></li>
-                            <li><a href="#" onclick="navigateTo('contact')" class="text-emerald-200 hover:text-white transition-colors">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-heading font-bold mb-4">Legal</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" onclick="navigateTo('privacy')" class="text-emerald-200 hover:text-white transition-colors">Política de Privacidad</a></li>
-                            <li><a href="#" onclick="navigateTo('terms')" class="text-emerald-200 hover:text-white transition-colors">Términos y Condiciones</a></li>
-                            <li><a href="#" onclick="navigateTo('cookies')" class="text-emerald-200 hover:text-white transition-colors">Política de Cookies</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="border-t border-emerald-800 mt-8 pt-8 text-center text-emerald-300 text-sm">
-                    <p>&copy; 2024 Portal de Productividad. Todos los derechos reservados.</p>
-                </div>
-            </div>
-        </footer>
-        
-        <!-- Cookie Banner -->
-        <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 shadow-lg z-50 hidden">
-            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-sm text-center md:text-left">
-                    Utilizamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra 
-                    <a href="#" onclick="navigateTo('cookies')" class="text-amber-400 hover:underline">Política de Cookies</a>.
-                </p>
-                <div class="flex gap-3">
-                    <button onclick="acceptCookies()" class="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-2 rounded-lg font-semibold transition-colors text-sm">
-                        Aceptar
-                    </button>
-                    <button onclick="rejectCookies()" class="bg-gray-700 hover:bg-gray-600 px-6 py-2 rounded-lg font-semibold transition-colors text-sm">
-                        Rechazar
-                    </button>
-                </div>
-            </div>
-        </div>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Revista digital con artículos sobre tecnología, estilo de vida y creatividad.">
+  <title>Lumina — Revista Digital</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-" crossorigin="anonymous"></script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .font-heading { font-family: 'DM Serif Display', Georgia, serif; }
+    .font-body { font-family: 'Outfit', sans-serif; }
+    .article-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .article-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .fade-in { animation: fadeIn 0.6s ease both; }
+    .fade-in-delay-1 { animation-delay: 0.15s; }
+    .fade-in-delay-2 { animation-delay: 0.3s; }
+    .fade-in-delay-3 { animation-delay: 0.45s; }
+    .fade-in-delay-4 { animation-delay: 0.6s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; transition: width 0.3s ease; }
+    .nav-link:hover::after { width: 100%; }
+    .hero-gradient { background: linear-gradient(135deg, var(--bg-color) 0%, color-mix(in srgb, var(--bg-color) 85%, var(--accent-color)) 100%); }
+    .category-pill { transition: background 0.2s ease, color 0.2s ease; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body overflow-auto" style="background-color: #FAF7F2; color: #2D2A26;">
+  <div id="app" class="w-full h-full" style="background-color: #FAF7F2;">
+   <!-- NAV -->
+   <header class="w-full border-b" style="border-color: #E8E2D9; background: rgba(250,247,242,0.95); backdrop-filter: blur(10px);" id="site-header">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center font-heading text-white text-lg" style="background-color: #C45D3E;" id="logo-icon">
+       L
+      </div><span class="font-heading text-xl" id="nav-title" style="color: #2D2A26;">Lumina</span>
+     </div>
+     <nav class="hidden md:flex items-center gap-7 text-sm font-medium" id="nav-links">
+      <a href="#inicio" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Inicio</a> <a href="#articulos" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Artículos</a> <a href="#sobre" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Sobre Nosotros</a> <a href="#contacto" class="nav-link" style="color: #2D2A26;" onmouseover="this.style.color=accentColor" onmouseout="this.style.color=textColor">Contacto</a>
+     </nav><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg" onclick="toggleMobileMenu()"> <i data-lucide="menu" style="width:22px;height:22px;color:#2D2A26;"></i> </button>
     </div>
-    
-    <script>
-        // Configuration
-        const defaultConfig = {
-            site_name: 'Portal de Productividad',
-            site_tagline: 'Transforma tu vida con hábitos efectivos',
-            contact_email: 'contacto@portalproductividad.com',
-            primary_color: '#065f46',
-            secondary_color: '#fef3c7',
-            text_color: '#1f2937',
-            accent_color: '#f59e0b',
-            surface_color: '#ffffff'
-        };
-        
-        let config = { ...defaultConfig };
-        let currentPage = 'home';
-        
-        // Articles data - 20 original articles
-        const articles = [
-            {
-                id: 1,
-                title: 'La Técnica Pomodoro: Guía Completa para Maximizar tu Concentración',
-                slug: 'tecnica-pomodoro-guia-completa',
-                category: 'Gestión del Tiempo',
-                date: '15 de Enero, 2024',
-                readTime: '8 min',
-                excerpt: 'Descubre cómo esta técnica revolucionaria puede transformar tu forma de trabajar y aumentar tu productividad hasta un 40%.',
-                image: '🍅',
-                content: `
-                    <p>La Técnica Pomodoro, desarrollada por Francesco Cirillo a finales de los años 80, se ha convertido en una de las metodologías de gestión del tiempo más populares y efectivas del mundo. Su nombre proviene del temporizador de cocina en forma de tomate que Cirillo utilizaba cuando era estudiante universitario.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">¿Qué es exactamente la Técnica Pomodoro?</h2>
-                    
-                    <p>La técnica consiste en dividir el trabajo en intervalos de 25 minutos, llamados "pomodoros", separados por breves descansos de 5 minutos. Después de completar cuatro pomodoros, se toma un descanso más largo de 15 a 30 minutos. Esta estructura aprovecha los ritmos naturales de concentración del cerebro humano.</p>
-                    
-                    <p>La ciencia detrás de esta técnica es fascinante. Nuestro cerebro funciona mejor cuando alterna entre períodos de enfoque intenso y momentos de descanso. Los estudios en neurociencia han demostrado que la atención sostenida tiene límites naturales, y que los descansos regulares ayudan a mantener un alto nivel de rendimiento cognitivo.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo implementar la Técnica Pomodoro paso a paso</h2>
-                    
-                    <ol>
-                        <li><strong>Elige una tarea específica:</strong> Antes de comenzar, define claramente qué vas a trabajar. La ambigüedad es enemiga de la productividad.</li>
-                        <li><strong>Configura el temporizador:</strong> Establece 25 minutos en tu temporizador. Puedes usar una aplicación, un temporizador físico o incluso el reloj de tu teléfono.</li>
-                        <li><strong>Trabaja sin interrupciones:</strong> Durante estos 25 minutos, tu único objetivo es avanzar en la tarea elegida. Cualquier distracción debe anotarse para atenderla después.</li>
-                        <li><strong>Descansa activamente:</strong> Cuando suene la alarma, toma un descanso de 5 minutos. Levántate, estira, hidratate, pero evita revisar redes sociales.</li>
-                        <li><strong>Repite el ciclo:</strong> Después de cuatro pomodoros, toma un descanso largo de 15-30 minutos para recargar completamente.</li>
-                    </ol>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Beneficios comprobados de la técnica</h2>
-                    
-                    <p>Los usuarios regulares de la Técnica Pomodoro reportan múltiples beneficios significativos. Primero, experimentan una reducción notable de la fatiga mental, ya que los descansos programados previenen el agotamiento cognitivo. Segundo, la estructura ayuda a combatir la procrastinación, porque comprometerse con solo 25 minutos de trabajo es psicológicamente más manejable que enfrentar una tarea que parece interminable.</p>
-                    
-                    <p>Además, esta técnica mejora la estimación del tiempo necesario para completar proyectos. Con el tiempo, desarrollas una mejor comprensión de cuántos pomodoros requiere cada tipo de tarea, lo que facilita la planificación y reduce el estrés asociado con los plazos.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Adaptaciones para diferentes contextos</h2>
-                    
-                    <p>Aunque el formato clásico de 25/5 minutos funciona para muchas personas, no dudes en experimentar con variaciones. Algunos profesionales creativos prefieren intervalos de 50 minutos con descansos de 10, mientras que otros encuentran que 15 minutos de trabajo intenso seguidos de 3 minutos de pausa son ideales para tareas que requieren mucha concentración.</p>
-                    
-                    <p>Lo importante es mantener la estructura de trabajo enfocado seguido de descanso deliberado. La técnica puede adaptarse a reuniones, sesiones de estudio, trabajo creativo e incluso tareas domésticas. La clave está en encontrar el ritmo que mejor se ajuste a tu estilo de trabajo y al tipo de actividades que realizas.</p>
-                `
-            },
-            {
-                id: 2,
-                title: 'Hábitos Atómicos: Cómo Pequeños Cambios Generan Grandes Resultados',
-                slug: 'habitos-atomicos-pequenos-cambios',
-                category: 'Desarrollo Personal',
-                date: '12 de Enero, 2024',
-                readTime: '10 min',
-                excerpt: 'Aprende el sistema científico para construir buenos hábitos y eliminar los malos de forma permanente.',
-                image: '⚛️',
-                content: `
-                    <p>El concepto de hábitos atómicos revoluciona nuestra comprensión sobre el cambio personal. En lugar de buscar transformaciones dramáticas de la noche a la mañana, este enfoque se centra en mejoras incrementales del 1% que, acumuladas con el tiempo, producen resultados extraordinarios.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El poder del interés compuesto aplicado a los hábitos</h2>
-                    
-                    <p>Imagina que mejoras solo un 1% cada día. Al final del año, serás 37 veces mejor que cuando empezaste. Este es el principio matemático detrás de los hábitos atómicos: pequeñas mejoras consistentes se multiplican exponencialmente con el tiempo.</p>
-                    
-                    <p>Por el contrario, si empeoras un 1% cada día, al final del año habrás reducido tu capacidad casi a cero. Esta asimetría explica por qué los buenos hábitos son tan valiosos y por qué los malos hábitos son tan destructivos a largo plazo.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Las cuatro leyes del cambio de comportamiento</h2>
-                    
-                    <p>Para construir un buen hábito, necesitas aplicar cuatro principios fundamentales:</p>
-                    
-                    <ul>
-                        <li><strong>Hacerlo obvio:</strong> Diseña tu entorno para que las señales de tus buenos hábitos sean visibles y claras. Por ejemplo, si quieres leer más, deja un libro en tu mesita de noche.</li>
-                        <li><strong>Hacerlo atractivo:</strong> Asocia el hábito con algo que disfrutes. Puedes escuchar tu podcast favorito solo mientras haces ejercicio.</li>
-                        <li><strong>Hacerlo fácil:</strong> Reduce la fricción. Si quieres ir al gimnasio por la mañana, prepara tu ropa de ejercicio la noche anterior.</li>
-                        <li><strong>Hacerlo satisfactorio:</strong> Crea recompensas inmediatas. Después de completar tu rutina de ejercicio, date un pequeño premio que disfrutes.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El papel de la identidad en la formación de hábitos</h2>
-                    
-                    <p>Uno de los conceptos más poderosos es el cambio basado en la identidad. En lugar de decir "quiero correr", dite "soy una persona que corre". Este cambio sutil pero profundo transforma tu relación con el hábito: ya no es algo que haces, sino algo que eres.</p>
-                    
-                    <p>Cada vez que realizas una acción, votas por el tipo de persona que quieres ser. Cada vez que escribes una página, votas por ser escritor. Cada vez que meditas, votas por ser alguien tranquilo y centrado. Con suficientes votos, la identidad se solidifica.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo eliminar malos hábitos</h2>
-                    
-                    <p>Para romper un mal hábito, invierte las cuatro leyes: hazlo invisible (elimina las señales), hazlo poco atractivo (resalta los aspectos negativos), hazlo difícil (aumenta la fricción) y hazlo insatisfactorio (crea consecuencias inmediatas).</p>
-                    
-                    <p>Por ejemplo, si quieres reducir el tiempo en redes sociales, elimina las aplicaciones de tu pantalla principal, recuérdate constantemente el tiempo que pierdes, establece límites de uso que requieran pasos adicionales para desbloquear, y comparte tu progreso con alguien que te haga responsable de tus decisiones.</p>
-                `
-            },
-            {
-                id: 3,
-                title: 'Matriz de Eisenhower: Prioriza como un Presidente',
-                slug: 'matriz-eisenhower-priorizar',
-                category: 'Gestión del Tiempo',
-                date: '10 de Enero, 2024',
-                readTime: '7 min',
-                excerpt: 'El método que usó Dwight D. Eisenhower para liderar un país y que tú puedes usar para organizar tu vida.',
-                image: '📊',
-                content: `
-                    <p>Dwight D. Eisenhower, el 34º presidente de Estados Unidos y comandante supremo de las fuerzas aliadas en la Segunda Guerra Mundial, desarrolló un sistema de priorización que le permitió manejar responsabilidades extraordinarias con claridad y eficiencia.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Los cuatro cuadrantes de la productividad</h2>
-                    
-                    <p>La matriz divide todas las tareas en cuatro categorías basadas en dos criterios: urgencia e importancia. Este sistema simple pero profundo transforma la forma en que abordamos nuestras responsabilidades diarias.</p>
-                    
-                    <p><strong>Cuadrante 1 - Urgente e Importante:</strong> Crisis, plazos inminentes, emergencias. Estas tareas requieren atención inmediata y no pueden delegarse. Sin embargo, vivir constantemente en este cuadrante conduce al agotamiento.</p>
-                    
-                    <p><strong>Cuadrante 2 - Importante pero No Urgente:</strong> Planificación, desarrollo personal, relaciones, prevención. Este es el cuadrante de la efectividad. Invertir tiempo aquí reduce la cantidad de crisis futuras y construye una vida más equilibrada.</p>
-                    
-                    <p><strong>Cuadrante 3 - Urgente pero No Importante:</strong> Interrupciones, algunas llamadas, ciertos correos. Estas tareas crean la ilusión de productividad pero no contribuyen a tus objetivos reales. Delega o minimiza.</p>
-                    
-                    <p><strong>Cuadrante 4 - Ni Urgente ni Importante:</strong> Distracciones, tiempo perdido, actividades de escape. Elimina estas actividades de tu rutina tanto como sea posible.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo aplicar la matriz en tu vida diaria</h2>
-                    
-                    <p>Cada mañana, antes de comenzar tu jornada, lista todas las tareas pendientes y clasifícalas en los cuatro cuadrantes. Esto te dará claridad inmediata sobre dónde enfocar tu energía y qué puede esperar o delegarse.</p>
-                    
-                    <p>El objetivo es pasar la mayor parte de tu tiempo en el Cuadrante 2, donde ocurre el verdadero progreso. Esto requiere disciplina para decir no a las distracciones del Cuadrante 3 y la tentación del Cuadrante 4.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Errores comunes al usar la matriz</h2>
-                    
-                    <p>Muchas personas confunden urgencia con importancia. Una notificación de redes sociales se siente urgente, pero rara vez es importante. Aprender a distinguir entre ambas es fundamental para el uso efectivo de esta herramienta.</p>
-                    
-                    <p>Otro error común es no revisar y actualizar la matriz regularmente. Las prioridades cambian, y lo que era importante hace una semana puede no serlo hoy. Dedica unos minutos cada día a reorganizar tu matriz según las circunstancias actuales.</p>
-                `
-            },
-            {
-                id: 4,
-                title: 'El Arte de la Mañana Productiva: Rutinas que Transforman tu Día',
-                slug: 'arte-manana-productiva',
-                category: 'Rutinas',
-                date: '8 de Enero, 2024',
-                readTime: '9 min',
-                excerpt: 'Diseña una rutina matutina que te prepare para el éxito desde el momento en que abres los ojos.',
-                image: '🌅',
-                content: `
-                    <p>Las primeras horas del día establecen el tono para todo lo que sigue. Los estudios demuestran que las personas más exitosas del mundo comparten un rasgo común: rutinas matutinas intencionales y consistentes.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">La ciencia del despertar</h2>
-                    
-                    <p>Nuestro cuerpo está gobernado por ritmos circadianos que influyen en nuestra energía, concentración y estado de ánimo. Despertar a la misma hora cada día sincroniza estos ritmos, mejorando la calidad del sueño y la claridad mental matutina.</p>
-                    
-                    <p>La hormona cortisol, a menudo asociada negativamente con el estrés, en realidad cumple una función vital por las mañanas: nos proporciona la energía necesaria para comenzar el día. Aprovechar este pico natural de cortisol realizando tareas importantes temprano maximiza nuestra productividad.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Componentes de una rutina matutina efectiva</h2>
-                    
-                    <ul>
-                        <li><strong>Hidratación:</strong> Después de 7-8 horas sin beber agua, tu cuerpo está deshidratado. Un vaso de agua al despertar activa tu metabolismo y mejora la función cognitiva.</li>
-                        <li><strong>Movimiento:</strong> No necesitas una sesión de gimnasio intenso. Incluso 10 minutos de estiramientos o una caminata corta despiertan tu cuerpo y mejoran tu estado de ánimo.</li>
-                        <li><strong>Silencio:</strong> Ya sea meditación, oración o simplemente sentarse en quietud, unos minutos de silencio preparan tu mente para el día.</li>
-                        <li><strong>Aprendizaje:</strong> Leer algunas páginas de un libro o escuchar un podcast educativo alimenta tu mente con ideas positivas.</li>
-                        <li><strong>Planificación:</strong> Revisar tus objetivos del día y priorizar tareas te da dirección y propósito.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Errores que sabotean tu mañana</h2>
-                    
-                    <p>El error más común es revisar el teléfono inmediatamente al despertar. Esto permite que las agendas de otros controlen tu mañana. Los correos, notificaciones y noticias pueden esperar hasta que hayas completado tu rutina personal.</p>
-                    
-                    <p>Otro saboteador frecuente es presionar el botón de repetición de la alarma. Cada vez que lo haces, interrumpes los ciclos de sueño de tu cerebro, lo que resulta en mayor fatiga y menor claridad mental durante el día.</p>
-                `
-            },
-            {
-                id: 5,
-                title: 'Mindfulness en el Trabajo: Productividad Consciente',
-                slug: 'mindfulness-trabajo-productividad',
-                category: 'Bienestar',
-                date: '5 de Enero, 2024',
-                readTime: '8 min',
-                excerpt: 'Integra prácticas de atención plena en tu jornada laboral para reducir el estrés y aumentar tu rendimiento.',
-                image: '🧘',
-                content: `
-                    <p>El mindfulness, o atención plena, ha pasado de ser una práctica espiritual oriental a convertirse en una herramienta respaldada científicamente para mejorar el rendimiento profesional y el bienestar personal.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">¿Qué es realmente el mindfulness?</h2>
-                    
-                    <p>Mindfulness es la capacidad de estar completamente presente en el momento actual, consciente de dónde estamos y qué estamos haciendo, sin reaccionar excesivamente a lo que ocurre a nuestro alrededor. No se trata de vaciar la mente, sino de observar nuestros pensamientos sin juzgarlos.</p>
-                    
-                    <p>En el contexto laboral, esto significa trabajar con plena atención en la tarea presente, en lugar de dividir nuestra energía mental entre múltiples preocupaciones, el pasado o el futuro.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Beneficios comprobados en el entorno profesional</h2>
-                    
-                    <p>Las investigaciones de instituciones como Harvard y Stanford han demostrado que la práctica regular de mindfulness mejora la concentración, reduce el estrés laboral, aumenta la creatividad y mejora la toma de decisiones. Las empresas más innovadoras del mundo, incluyendo Google y Apple, ofrecen programas de mindfulness a sus empleados.</p>
-                    
-                    <p>Los practicantes regulares reportan mejor manejo de situaciones de presión, relaciones laborales más saludables y mayor satisfacción con su trabajo. También se ha observado una reducción significativa en el agotamiento profesional y las bajas por estrés.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Prácticas sencillas para el día a día</h2>
-                    
-                    <ul>
-                        <li><strong>Respiración consciente:</strong> Antes de una reunión importante, toma tres respiraciones profundas, prestando atención a cada inhalación y exhalación.</li>
-                        <li><strong>Monotarea:</strong> En lugar de alternar entre tareas, dedica bloques de tiempo a una sola actividad con plena atención.</li>
-                        <li><strong>Pausas mindful:</strong> Cada hora, toma 60 segundos para observar tu postura, relajar tensiones y reconectar con el presente.</li>
-                        <li><strong>Escucha activa:</strong> En conversaciones, practica escuchar completamente sin planificar tu respuesta mientras el otro habla.</li>
-                    </ul>
-                `
-            },
-            {
-                id: 6,
-                title: 'La Regla de los Dos Minutos: Vence la Procrastinación Instantáneamente',
-                slug: 'regla-dos-minutos-procrastinacion',
-                category: 'Productividad',
-                date: '3 de Enero, 2024',
-                readTime: '6 min',
-                excerpt: 'Una técnica simple pero poderosa para eliminar las pequeñas tareas que se acumulan y roban tu energía.',
-                image: '⏱️',
-                content: `
-                    <p>La Regla de los Dos Minutos es uno de los principios más simples y efectivos de la metodología GTD (Getting Things Done) de David Allen. Su premisa es directa: si una tarea puede completarse en dos minutos o menos, hazla inmediatamente en lugar de posponerla.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Por qué funciona esta regla</h2>
-                    
-                    <p>El tiempo y la energía mental que gastamos en recordar, posponer y finalmente realizar una tarea pequeña supera con creces el tiempo que toma simplemente hacerla de inmediato. Cada tarea pendiente ocupa espacio en nuestra mente, creando lo que los psicólogos llaman "carga cognitiva".</p>
-                    
-                    <p>Además, completar tareas rápidas genera pequeñas victorias que mejoran nuestro estado de ánimo y momentum. Este impulso positivo nos ayuda a abordar tareas más grandes con mayor confianza y energía.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Ejemplos prácticos de aplicación</h2>
-                    
-                    <ul>
-                        <li>Responder un correo breve que solo requiere una línea de confirmación</li>
-                        <li>Archivar un documento en su carpeta correspondiente</li>
-                        <li>Hacer una llamada rápida para confirmar una cita</li>
-                        <li>Lavar un plato inmediatamente después de usarlo</li>
-                        <li>Escribir una nota de agradecimiento</li>
-                        <li>Actualizar un dato en tu agenda o calendario</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Extensión: La regla como trampolín</h2>
-                    
-                    <p>Una variación poderosa de esta técnica es usarla como trampolín para tareas más grandes. Si tienes resistencia a comenzar un proyecto importante, comprométete a trabajar en él solo dos minutos. Frecuentemente, una vez que empezamos, la inercia nos lleva a continuar mucho más allá de ese tiempo inicial.</p>
-                    
-                    <p>Esta aplicación aprovecha un fenómeno psicológico llamado "efecto Zeigarnik": nuestro cerebro tiene tendencia a completar las tareas que hemos comenzado. Al dar el primer paso, activamos este mecanismo natural que nos impulsa hacia adelante.</p>
-                `
-            },
-            {
-                id: 7,
-                title: 'Diseño de Espacios de Trabajo: El Entorno que Impulsa tu Rendimiento',
-                slug: 'diseno-espacios-trabajo',
-                category: 'Ambiente',
-                date: '1 de Enero, 2024',
-                readTime: '9 min',
-                excerpt: 'Cómo organizar tu espacio físico para maximizar la concentración y minimizar las distracciones.',
-                image: '🏠',
-                content: `
-                    <p>Tu entorno físico tiene un impacto profundo en tu capacidad de concentración, creatividad y bienestar general. Un espacio de trabajo bien diseñado no es un lujo, sino una inversión en tu productividad.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Principios fundamentales del diseño productivo</h2>
-                    
-                    <p>El primer principio es la reducción del desorden visual. Cada objeto en tu campo de visión compite por tu atención, incluso cuando no eres consciente de ello. Un escritorio despejado permite que tu cerebro se enfoque completamente en la tarea presente.</p>
-                    
-                    <p>El segundo principio es la ergonomía. La posición de tu silla, la altura de tu monitor y la disposición de tu teclado afectan no solo tu comodidad física, sino también tu energía mental. El dolor y la incomodidad son distractores constantes que drenan tu concentración.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">La iluminación como factor clave</h2>
-                    
-                    <p>La luz natural es el mejor aliado de la productividad. Los estudios demuestran que las personas que trabajan cerca de ventanas reportan mayor satisfacción laboral, mejor sueño y más energía durante el día. Si no tienes acceso a luz natural abundante, considera invertir en iluminación que simule la luz del día.</p>
-                    
-                    <p>Evita la iluminación directa sobre tu pantalla, que causa fatiga visual. Una combinación de luz ambiental suave y una lámpara de escritorio direccional proporciona el equilibrio ideal para trabajar largas horas sin cansar tus ojos.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Zonas y rituales de transición</h2>
-                    
-                    <p>Si trabajas desde casa, es crucial establecer límites físicos entre tu espacio de trabajo y tu espacio de descanso. Esto puede ser tan simple como tener un escritorio dedicado o tan elaborado como una habitación separada. Lo importante es que tu cerebro asocie ese espacio exclusivamente con el trabajo enfocado.</p>
-                    
-                    <p>Crear rituales de transición, como encender una lámpara específica al comenzar a trabajar o cerrar el ordenador de cierta manera al terminar, ayuda a tu mente a entrar y salir del "modo trabajo" de manera más efectiva.</p>
-                `
-            },
-            {
-                id: 8,
-                title: 'El Poder de Decir No: Protege tu Tiempo y Energía',
-                slug: 'poder-decir-no',
-                category: 'Desarrollo Personal',
-                date: '28 de Diciembre, 2023',
-                readTime: '7 min',
-                excerpt: 'Aprende a establecer límites saludables sin culpa para enfocarte en lo que realmente importa.',
-                image: '🛑',
-                content: `
-                    <p>Cada "sí" que das implica un "no" a algo más. Cuando aceptamos compromisos sin reflexionar, frecuentemente estamos diciendo no a nuestras propias prioridades, salud y bienestar. Aprender a declinar peticiones de manera respetuosa pero firme es una habilidad esencial para la productividad sostenible.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Por qué nos cuesta tanto decir no</h2>
-                    
-                    <p>Evolutivamente, los humanos somos criaturas sociales que dependíamos de la aceptación del grupo para sobrevivir. Este instinto ancestral nos hace sentir incómodos al rechazar peticiones, temiendo el rechazo social o ser percibidos como egoístas.</p>
-                    
-                    <p>Sin embargo, en el mundo moderno, esta tendencia a complacer puede llevarnos al agotamiento y la frustración. Las personas que no establecen límites claros frecuentemente terminan resentidas y con menos energía para las cosas que realmente valoran.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Estrategias para declinar con gracia</h2>
-                    
-                    <ul>
-                        <li><strong>El no diferido:</strong> "Déjame revisar mi agenda y te confirmo." Esto te da tiempo para evaluar sin la presión del momento.</li>
-                        <li><strong>El no con alternativa:</strong> "No puedo ayudarte con eso, pero quizás [otra persona o recurso] pueda."</li>
-                        <li><strong>El no parcial:</strong> "No puedo hacer el proyecto completo, pero puedo contribuir con [parte específica]."</li>
-                        <li><strong>El no honesto:</strong> "Gracias por pensar en mí, pero tengo otros compromisos que no me permiten dar a esto la atención que merece."</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Reencuadrar el no como un acto de integridad</h2>
-                    
-                    <p>Decir no no es egoísta; es honesto. Cuando aceptas algo que no puedes hacer bien o que resientes, le haces un flaco favor a todos los involucrados. Un no claro y temprano es más respetuoso que un sí a medias que termina en decepción.</p>
-                    
-                    <p>Además, cada no protege tu capacidad de dar síes de calidad. Cuando preservas tu tiempo y energía para tus verdaderas prioridades, puedes aparecer completamente presente y comprometido en las cosas que realmente importan.</p>
-                `
-            },
-            {
-                id: 9,
-                title: 'Gestión de Energía vs Gestión de Tiempo: Un Cambio de Paradigma',
-                slug: 'gestion-energia-tiempo',
-                category: 'Productividad',
-                date: '25 de Diciembre, 2023',
-                readTime: '8 min',
-                excerpt: 'Por qué manejar tu energía es más importante que manejar tu tiempo para lograr resultados sostenibles.',
-                image: '⚡',
-                content: `
-                    <p>Durante décadas, la productividad se ha centrado en la gestión del tiempo. Sin embargo, el tiempo es un recurso fijo e inflexible: todos tenemos exactamente 24 horas al día. La energía, por otro lado, es un recurso renovable que podemos expandir, dirigir y recuperar estratégicamente.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Las cuatro dimensiones de la energía</h2>
-                    
-                    <p><strong>Energía física:</strong> La base de todo. Sin salud y vitalidad física, las otras formas de energía se ven comprometidas. Sueño, nutrición y ejercicio son los pilares de esta dimensión.</p>
-                    
-                    <p><strong>Energía emocional:</strong> La calidad de nuestra experiencia emocional influye directamente en nuestro rendimiento. Las emociones negativas como el miedo, la frustración y la ira drenan energía, mientras que las positivas como la alegría y la gratitud la generan.</p>
-                    
-                    <p><strong>Energía mental:</strong> Nuestra capacidad de concentración, creatividad y pensamiento crítico. Esta energía se agota con el uso continuo y requiere períodos de recuperación.</p>
-                    
-                    <p><strong>Energía espiritual:</strong> La conexión con un propósito mayor que nosotros mismos. Cuando nuestro trabajo tiene significado, accedemos a reservas de energía que trascienden las limitaciones normales.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Ritmos y recuperación</h2>
-                    
-                    <p>Los estudios sobre rendimiento humano demuestran que funcionamos mejor en ciclos de esfuerzo y recuperación, no en trabajo continuo. Los atletas de élite entienden esto perfectamente: los períodos de descanso son tan importantes como los de entrenamiento.</p>
-                    
-                    <p>Aplicar este principio al trabajo significa programar no solo las tareas, sino también los descansos. Microdescansos cada 90 minutos, pausas más largas a medio día y desconexiones completas los fines de semana son esenciales para mantener niveles óptimos de energía.</p>
-                `
-            },
-            {
-                id: 10,
-                title: 'Sistemas vs Metas: La Filosofía que Garantiza el Éxito',
-                slug: 'sistemas-vs-metas',
-                category: 'Estrategia',
-                date: '22 de Diciembre, 2023',
-                readTime: '7 min',
-                excerpt: 'Descubre por qué enfocarte en sistemas produce mejores resultados que obsesionarte con metas específicas.',
-                image: '🎯',
-                content: `
-                    <p>La sabiduría convencional nos dice que debemos establecer metas claras y trabajar incansablemente hacia ellas. Sin embargo, hay un enfoque alternativo que muchos consideran más efectivo: enfocarse en sistemas en lugar de metas.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El problema con las metas</h2>
-                    
-                    <p>Las metas tienen varias limitaciones inherentes. Primero, crean una mentalidad de "todo o nada": o alcanzas la meta o fracasas, sin reconocimiento del progreso intermedio. Segundo, posponen la felicidad: te convences de que serás feliz cuando alcances la meta, perdiendo el disfrute del proceso.</p>
-                    
-                    <p>Tercero, las metas son inherentemente temporales. Una vez que alcanzas una meta, necesitas establecer otra nueva para mantener la motivación. Este ciclo interminable puede ser agotador y poco satisfactorio.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">La superioridad de los sistemas</h2>
-                    
-                    <p>Un sistema es un proceso continuo que realizas regularmente. En lugar de "quiero perder 10 kilos" (meta), adoptas "ejercito 30 minutos diarios y como principalmente alimentos naturales" (sistema). La diferencia es sutil pero profunda.</p>
-                    
-                    <p>Con un buen sistema, los resultados deseados se convierten en subproductos naturales del proceso. No necesitas fuerza de voluntad constante ni motivación externa porque el sistema se convierte en parte de tu identidad y rutina.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo diseñar sistemas efectivos</h2>
-                    
-                    <ul>
-                        <li>Identifica el proceso que conduce naturalmente al resultado deseado</li>
-                        <li>Simplifica el proceso al mínimo viable que puedas mantener consistentemente</li>
-                        <li>Integra el sistema en tu rutina diaria existente</li>
-                        <li>Mide el cumplimiento del sistema, no el progreso hacia la meta</li>
-                        <li>Ajusta el sistema basándote en retroalimentación, no en resultados a corto plazo</li>
-                    </ul>
-                `
-            },
-            {
-                id: 11,
-                title: 'Deep Work: El Superpoder del Siglo XXI',
-                slug: 'deep-work-superpoder',
-                category: 'Concentración',
-                date: '20 de Diciembre, 2023',
-                readTime: '10 min',
-                excerpt: 'Cómo cultivar la capacidad de concentración profunda en un mundo lleno de distracciones.',
-                image: '🧠',
-                content: `
-                    <p>El "Deep Work" o trabajo profundo, concepto popularizado por Cal Newport, se refiere a actividades profesionales realizadas en un estado de concentración sin distracciones que llevan tus capacidades cognitivas al límite. Este tipo de trabajo crea nuevo valor, mejora tus habilidades y es difícil de replicar.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Por qué el trabajo profundo es cada vez más valioso</h2>
-                    
-                    <p>En la economía del conocimiento actual, la capacidad de aprender cosas complejas rápidamente y producir trabajo de alta calidad es cada vez más escasa y, por lo tanto, más valiosa. Mientras la mayoría de las personas se fragmentan entre notificaciones, correos y redes sociales, quienes pueden concentrarse profundamente poseen una ventaja competitiva significativa.</p>
-                    
-                    <p>El trabajo superficial, aunque necesario, no produce resultados que te diferencien. Son las horas de concentración intensa las que generan los avances, las innovaciones y el trabajo verdaderamente significativo.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Estrategias para cultivar el trabajo profundo</h2>
-                    
-                    <p><strong>La filosofía monástica:</strong> Eliminar o minimizar radicalmente las obligaciones superficiales para maximizar el trabajo profundo. Ideal para investigadores o creativos.</p>
-                    
-                    <p><strong>La filosofía bimodal:</strong> Dividir el tiempo claramente entre períodos de trabajo profundo intenso y períodos de trabajo superficial y disponibilidad.</p>
-                    
-                    <p><strong>La filosofía rítmica:</strong> Establecer una rutina diaria de trabajo profundo a la misma hora cada día, convirtiéndolo en hábito.</p>
-                    
-                    <p><strong>La filosofía periodística:</strong> Aprovechar cualquier momento disponible para el trabajo profundo, cambiando rápidamente a modo concentrado cuando surge la oportunidad.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Rituales y preparación</h2>
-                    
-                    <p>El cerebro necesita señales claras para entrar en modo de concentración profunda. Desarrolla rituales que marquen el inicio de tus sesiones de trabajo profundo: puede ser preparar un tipo específico de bebida, sentarte en un lugar determinado, o realizar una breve meditación de transición.</p>
-                `
-            },
-            {
-                id: 12,
-                title: 'El Método GTD: Organiza tu Mente, Libera tu Potencial',
-                slug: 'metodo-gtd-organizacion',
-                category: 'Metodología',
-                date: '18 de Diciembre, 2023',
-                readTime: '11 min',
-                excerpt: 'Una guía completa del sistema Getting Things Done para capturar, organizar y ejecutar todas tus responsabilidades.',
-                image: '📋',
-                content: `
-                    <p>Getting Things Done (GTD), desarrollado por David Allen, es uno de los sistemas de productividad personal más influyentes del mundo. Su premisa central es simple pero revolucionaria: tu mente está para tener ideas, no para retenerlas.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Los cinco pasos del GTD</h2>
-                    
-                    <p><strong>1. Capturar:</strong> Registra absolutamente todo lo que capte tu atención en un sistema de confianza externo a tu mente. Esto incluye tareas, ideas, proyectos, preocupaciones y cualquier cosa que requiera tu atención.</p>
-                    
-                    <p><strong>2. Clarificar:</strong> Procesa cada elemento capturado preguntándote: ¿Qué es esto? ¿Es accionable? Si es accionable, ¿cuál es la próxima acción concreta? Si no es accionable, desécalo, archívalo para referencia o inclúyelo en una lista de "algún día/quizás".</p>
-                    
-                    <p><strong>3. Organizar:</strong> Coloca cada elemento en su lugar apropiado. Las próximas acciones van a listas por contexto, los proyectos a una lista de proyectos, las referencias a un sistema de archivo, y los compromisos con fecha específica a un calendario.</p>
-                    
-                    <p><strong>4. Reflexionar:</strong> Revisa regularmente tus listas y sistemas. La revisión semanal es el ritual más importante del GTD, donde evalúas todos tus compromisos y te aseguras de que nada se escape.</p>
-                    
-                    <p><strong>5. Actuar:</strong> Con un sistema confiable y actualizado, puedes elegir qué hacer en cada momento con confianza, sabiendo que estás tomando la mejor decisión posible basada en tu situación actual.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El poder de la "mente como agua"</h2>
-                    
-                    <p>Allen utiliza la metáfora de la "mente como agua" para describir el estado ideal de productividad. Como el agua, que responde apropiadamente a cada estímulo sin sobrereaccionar ni subreaccionar, una mente libre de compromisos no procesados puede responder con claridad y creatividad a cada situación.</p>
-                `
-            },
-            {
-                id: 13,
-                title: 'Batching: Agrupa Tareas para Multiplicar tu Eficiencia',
-                slug: 'batching-agrupar-tareas',
-                category: 'Técnicas',
-                date: '15 de Diciembre, 2023',
-                readTime: '6 min',
-                excerpt: 'Cómo la agrupación de tareas similares puede reducir drásticamente el tiempo perdido en cambios de contexto.',
-                image: '📦',
-                content: `
-                    <p>El batching, o agrupación de tareas, es una técnica de productividad que consiste en agrupar actividades similares y realizarlas en bloques de tiempo dedicados. Esta estrategia aprovecha el funcionamiento natural del cerebro y minimiza el costoso cambio de contexto.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El costo oculto del cambio de contexto</h2>
-                    
-                    <p>Cada vez que cambias de una tarea a otra, tu cerebro necesita tiempo para ajustarse al nuevo contexto. Los estudios sugieren que este "residuo de atención" puede durar hasta 25 minutos después de cambiar de tarea. Si alternas constantemente entre diferentes tipos de actividades, pasas una parte significativa de tu día simplemente reorientándote.</p>
-                    
-                    <p>El batching elimina estos cambios innecesarios al agrupar tareas que requieren el mismo tipo de pensamiento, herramientas o estado mental.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Ejemplos de batching efectivo</h2>
-                    
-                    <ul>
-                        <li><strong>Correos:</strong> En lugar de revisar el correo constantemente, hazlo en 2-3 momentos específicos del día.</li>
-                        <li><strong>Llamadas:</strong> Programa un bloque de tiempo para realizar todas las llamadas pendientes.</li>
-                        <li><strong>Reuniones:</strong> Concentra las reuniones en ciertos días u horas para proteger bloques de tiempo para trabajo profundo.</li>
-                        <li><strong>Administrativo:</strong> Agrupa tareas como facturación, organización de archivos y actualizaciones de sistemas.</li>
-                        <li><strong>Creación de contenido:</strong> Escribe varios artículos o crea múltiples piezas de contenido en sesiones dedicadas.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo implementar el batching</h2>
-                    
-                    <p>Comienza identificando las tareas recurrentes que realizas durante la semana. Luego, categorízalas por tipo y asigna bloques de tiempo específicos para cada categoría. Comunica tu sistema a colegas y clientes para establecer expectativas sobre tu disponibilidad y tiempos de respuesta.</p>
-                `
-            },
-            {
-                id: 14,
-                title: 'La Dieta de Información: Consume Contenido con Intención',
-                slug: 'dieta-informacion-contenido',
-                category: 'Enfoque Digital',
-                date: '12 de Diciembre, 2023',
-                readTime: '8 min',
-                excerpt: 'Aprende a filtrar el ruido informativo para consumir solo contenido que enriquezca tu vida y trabajo.',
-                image: '📱',
-                content: `
-                    <p>Vivimos en una era de abundancia informativa sin precedentes. Cada día se genera más contenido del que cualquier persona podría consumir en toda una vida. Sin una estrategia consciente de filtrado, nos ahogamos en un mar de información sin obtener verdadero conocimiento o sabiduría.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Los efectos del consumo descontrolado</h2>
-                    
-                    <p>El consumo excesivo e indiscriminado de información tiene consecuencias serias. Fragmenta nuestra atención, genera ansiedad, reduce nuestra capacidad de pensamiento profundo y nos deja con una sensación de estar constantemente abrumados. Paradójicamente, mientras más consumimos, menos sabemos y menos capaces nos volvemos de actuar.</p>
-                    
-                    <p>La información solo tiene valor cuando se transforma en conocimiento aplicable. Consumir más noticias, videos o artículos de los que puedes procesar y utilizar es contraproducente.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Principios de una dieta informativa saludable</h2>
-                    
-                    <ul>
-                        <li><strong>Intención sobre impulso:</strong> Antes de consumir contenido, pregúntate: ¿Por qué estoy leyendo/viendo esto? ¿Qué espero obtener?</li>
-                        <li><strong>Profundidad sobre amplitud:</strong> Es mejor leer un libro completo sobre un tema que 20 artículos superficiales.</li>
-                        <li><strong>Antiguo sobre nuevo:</strong> La información que ha resistido el paso del tiempo suele ser más valiosa que las últimas noticias.</li>
-                        <li><strong>Activo sobre pasivo:</strong> Tomar notas, discutir y aplicar lo aprendido consolida el conocimiento.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Implementación práctica</h2>
-                    
-                    <p>Establece momentos específicos para el consumo de información y respétalos. Desactiva notificaciones innecesarias. Cura tus fuentes de información con criterio riguroso. Implementa una regla de "una entrada, una salida": antes de añadir una nueva fuente de contenido, elimina una existente.</p>
-                `
-            },
-            {
-                id: 15,
-                title: 'Revisiones Semanales: El Ritual que Mantiene Todo en Orden',
-                slug: 'revisiones-semanales-ritual',
-                category: 'Planificación',
-                date: '10 de Diciembre, 2023',
-                readTime: '7 min',
-                excerpt: 'Cómo una hora semanal de reflexión puede transformar tu claridad y control sobre tu vida.',
-                image: '📅',
-                content: `
-                    <p>La revisión semanal es quizás el hábito más importante para mantener una vida productiva y equilibrada. Es el momento en que sales del bosque para ver el panorama completo, evaluar tu progreso y ajustar tu rumbo.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Por qué la revisión semanal es esencial</h2>
-                    
-                    <p>Sin revisiones regulares, es fácil perderse en la ejecución diaria y perder de vista tus objetivos más importantes. Las tareas urgentes pero no importantes devoran tu tiempo, los proyectos importantes se estancan, y los compromisos se olvidan hasta que se convierten en crisis.</p>
-                    
-                    <p>La revisión semanal te devuelve el control. Te permite identificar lo que funciona y lo que no, celebrar victorias, aprender de errores y recalibrar tu enfoque para la semana siguiente.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Estructura de una revisión efectiva</h2>
-                    
-                    <ol>
-                        <li><strong>Vaciar:</strong> Procesa todas las entradas acumuladas: correos, notas, ideas sueltas, tareas en papel.</li>
-                        <li><strong>Revisar:</strong> Examina tu calendario de la semana pasada y la siguiente. Revisa todas tus listas de tareas y proyectos.</li>
-                        <li><strong>Reflexionar:</strong> ¿Qué logré esta semana? ¿Qué no logré y por qué? ¿Qué aprendí?</li>
-                        <li><strong>Planificar:</strong> Identifica las 3-5 prioridades más importantes para la próxima semana.</li>
-                        <li><strong>Preparar:</strong> Asegura que tienes todo lo necesario para comenzar la semana con claridad y momentum.</li>
-                    </ol>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Consejos para establecer el hábito</h2>
-                    
-                    <p>Elige un momento fijo cada semana para tu revisión: muchas personas prefieren el viernes por la tarde o el domingo por la noche. Crea un ambiente propicio: un café tranquilo, música suave, o tu espacio favorito en casa. Comienza con revisiones cortas de 30 minutos y expande gradualmente según descubras qué funciona mejor para ti.</p>
-                `
-            },
-            {
-                id: 16,
-                title: 'Procrastinación Productiva: Usa tu Tendencia a Postergar a tu Favor',
-                slug: 'procrastinacion-productiva',
-                category: 'Psicología',
-                date: '8 de Diciembre, 2023',
-                readTime: '6 min',
-                excerpt: 'Descubre cómo convertir tu impulso de procrastinar en una herramienta de productividad.',
-                image: '🔄',
-                content: `
-                    <p>La procrastinación es universalmente condenada como el enemigo de la productividad. Sin embargo, existe una forma de aprovechar esta tendencia natural para lograr más, no menos. Se llama procrastinación estructurada o productiva.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El concepto de procrastinación estructurada</h2>
-                    
-                    <p>La idea, popularizada por el filósofo John Perry, es simple: los procrastinadores rara vez están sin hacer nada; usualmente hacen otras cosas para evitar lo que "deberían" estar haciendo. La procrastinación estructurada aprovecha esto manteniendo una lista de tareas donde las más importantes aparecen arriba, pero otras tareas valiosas aparecen debajo.</p>
-                    
-                    <p>Cuando procrastinas la tarea principal, terminas haciendo las otras tareas de la lista. El resultado neto es que mucho trabajo útil se completa, aunque no necesariamente en el orden "ideal".</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo implementar esta técnica</h2>
-                    
-                    <ul>
-                        <li>Crea una lista con tareas genuinamente importantes pero no urgentes en la parte superior</li>
-                        <li>Incluye muchas tareas valiosas pero menos intimidantes debajo</li>
-                        <li>Cuando evites la tarea principal, permítete trabajar en cualquier otra tarea de la lista</li>
-                        <li>Rota las tareas principales periódicamente para evitar estancamiento total</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Combinando con otras estrategias</h2>
-                    
-                    <p>La procrastinación productiva funciona mejor como complemento, no como reemplazo, de otras técnicas de productividad. Úsala en conjunto con la Regla de los Dos Minutos para tareas pequeñas, la Técnica Pomodoro para cuando te sientas motivado a abordar tareas difíciles, y las revisiones semanales para asegurar que las tareas importantes eventualmente reciban atención.</p>
-                `
-            },
-            {
-                id: 17,
-                title: 'El Principio de Pareto Aplicado a la Productividad',
-                slug: 'principio-pareto-productividad',
-                category: 'Estrategia',
-                date: '5 de Diciembre, 2023',
-                readTime: '7 min',
-                excerpt: 'Cómo identificar el 20% de actividades que genera el 80% de tus resultados.',
-                image: '📊',
-                content: `
-                    <p>El Principio de Pareto, también conocido como la regla 80/20, establece que aproximadamente el 80% de los resultados provienen del 20% de las causas. Aplicado a la productividad, esto significa que una pequeña porción de tus actividades genera la mayoría de tu valor.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Identificando tu 20% crítico</h2>
-                    
-                    <p>Para aprovechar este principio, primero necesitas identificar cuáles de tus actividades pertenecen al 20% vital. Pregúntate: ¿Qué tareas producen los mayores resultados en mi trabajo? ¿Qué clientes generan la mayoría de mis ingresos? ¿Qué habilidades contribuyen más a mi éxito?</p>
-                    
-                    <p>La respuesta a estas preguntas te ayudará a enfocar tu energía limitada en las actividades de mayor impacto. Frecuentemente descubrimos que pasamos demasiado tiempo en el 80% de actividades que producen resultados marginales.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Aplicaciones prácticas</h2>
-                    
-                    <ul>
-                        <li><strong>Clientes:</strong> Identifica tus mejores clientes y dedícales más atención mientras reduces tiempo en clientes problemáticos de bajo valor.</li>
-                        <li><strong>Tareas:</strong> Prioriza las actividades que directamente generan valor sobre el trabajo administrativo o de mantenimiento.</li>
-                        <li><strong>Habilidades:</strong> Invierte en desarrollar las pocas habilidades que más impactan tu rendimiento.</li>
-                        <li><strong>Relaciones:</strong> Nutre las relaciones profesionales que más te benefician y aportan.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El 80/20 dentro del 80/20</h2>
-                    
-                    <p>Un concepto poderoso es aplicar el principio recursivamente. Dentro de tu 20% más productivo, hay otro 20% que es aún más valioso. Esto significa que aproximadamente el 4% de tus actividades (20% del 20%) genera alrededor del 64% de tus resultados (80% del 80%). Identificar y proteger este 4% crítico puede transformar radicalmente tu efectividad.</p>
-                `
-            },
-            {
-                id: 18,
-                title: 'Automatización Personal: Libera Tiempo para lo que Importa',
-                slug: 'automatizacion-personal',
-                category: 'Tecnología',
-                date: '3 de Diciembre, 2023',
-                readTime: '8 min',
-                excerpt: 'Herramientas y estrategias para automatizar tareas repetitivas y recuperar horas de tu semana.',
-                image: '🤖',
-                content: `
-                    <p>Vivimos en una era donde la tecnología puede encargarse de muchas tareas repetitivas que antes requerían nuestra atención manual. Identificar oportunidades de automatización y aprovecharlas es una de las formas más efectivas de multiplicar tu productividad.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El principio de automatización</h2>
-                    
-                    <p>Cualquier tarea que realices más de una vez y que siga un patrón predecible es candidata a automatización. El tiempo invertido en configurar una automatización se recupera rápidamente cuando la tarea es frecuente o consume mucho tiempo manual.</p>
-                    
-                    <p>Sin embargo, la automatización no debe ser un fin en sí mismo. El objetivo es liberar tu tiempo para actividades de mayor valor que requieren tu juicio, creatividad o toque humano.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Áreas comunes de automatización</h2>
-                    
-                    <ul>
-                        <li><strong>Correo electrónico:</strong> Filtros, respuestas automáticas, plantillas para mensajes frecuentes.</li>
-                        <li><strong>Finanzas:</strong> Pagos automáticos, transferencias programadas, categorización de gastos.</li>
-                        <li><strong>Redes sociales:</strong> Programación de publicaciones, respuestas automáticas a mensajes comunes.</li>
-                        <li><strong>Copias de seguridad:</strong> Sincronización automática de archivos importantes.</li>
-                        <li><strong>Informes:</strong> Generación automática de reportes periódicos.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo empezar</h2>
-                    
-                    <p>Durante una semana, lleva un registro de todas las tareas repetitivas que realizas. Luego, evalúa cada una preguntándote: ¿Puede automatizarse total o parcialmente? ¿Qué herramientas necesitaría? ¿Cuánto tiempo me ahorrará a largo plazo? Comienza con las victorias fáciles: automatizaciones simples que puedes configurar en minutos y que te ahorrarán tiempo cada día.</p>
-                `
-            },
-            {
-                id: 19,
-                title: 'El Poder del Sueño: Tu Arma Secreta de Productividad',
-                slug: 'poder-sueno-productividad',
-                category: 'Bienestar',
-                date: '1 de Diciembre, 2023',
-                readTime: '9 min',
-                excerpt: 'Por qué dormir bien es la inversión más rentable que puedes hacer en tu rendimiento.',
-                image: '😴',
-                content: `
-                    <p>En una cultura que glorifica el trabajo excesivo y las pocas horas de sueño, reconocer la importancia del descanso adecuado es casi revolucionario. Sin embargo, la ciencia es inequívoca: el sueño insuficiente o de mala calidad destruye tu productividad más que cualquier otro factor.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Lo que sucede mientras duermes</h2>
-                    
-                    <p>Durante el sueño, tu cerebro no está inactivo; está extremadamente ocupado. Consolida memorias, procesa experiencias emocionales, elimina toxinas acumuladas durante el día, y restaura sistemas cognitivos agotados. Privarte de sueño es como esperar que tu computadora funcione bien mientras ejecuta actualizaciones críticas del sistema.</p>
-                    
-                    <p>Los estudios demuestran que después de solo una noche de sueño insuficiente, la capacidad de concentración, la toma de decisiones y la creatividad se ven significativamente afectadas. El efecto acumulativo de la privación crónica de sueño es devastador.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Optimizando tu sueño</h2>
-                    
-                    <ul>
-                        <li><strong>Consistencia:</strong> Acuéstate y levántate a la misma hora todos los días, incluyendo fines de semana.</li>
-                        <li><strong>Ambiente:</strong> Mantén tu habitación oscura, fresca y silenciosa.</li>
-                        <li><strong>Rituales:</strong> Crea una rutina relajante antes de dormir que señale a tu cuerpo que es hora de descansar.</li>
-                        <li><strong>Luz:</strong> Evita pantallas al menos una hora antes de dormir; exponte a luz natural por las mañanas.</li>
-                        <li><strong>Estimulantes:</strong> Limita la cafeína después del mediodía y el alcohol antes de dormir.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cambiando tu perspectiva</h2>
-                    
-                    <p>En lugar de ver el sueño como tiempo perdido que podría dedicarse al trabajo, reconócelo como una inversión en tu rendimiento. Las horas "ahorradas" al dormir menos se pagan con creces en forma de menor productividad, más errores, y peor calidad de trabajo durante las horas de vigilia.</p>
-                `
-            },
-            {
-                id: 20,
-                title: 'Mentalidad de Crecimiento: La Base de Todo Progreso',
-                slug: 'mentalidad-crecimiento-progreso',
-                category: 'Mindset',
-                date: '28 de Noviembre, 2023',
-                readTime: '8 min',
-                excerpt: 'Cómo tu forma de pensar sobre tus capacidades determina tu potencial de desarrollo.',
-                image: '🌱',
-                content: `
-                    <p>La investigadora Carol Dweck de Stanford identificó dos tipos fundamentales de mentalidad que influyen profundamente en cómo enfrentamos los desafíos, aprendemos y crecemos: la mentalidad fija y la mentalidad de crecimiento.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Mentalidad fija vs. mentalidad de crecimiento</h2>
-                    
-                    <p>Las personas con mentalidad fija creen que sus cualidades básicas, como inteligencia o talento, son rasgos fijos que no pueden cambiar. Pasan tiempo documentando su inteligencia o talento en lugar de desarrollarlos. También creen que el talento solo crea el éxito, sin esfuerzo.</p>
-                    
-                    <p>Las personas con mentalidad de crecimiento, en cambio, creen que sus habilidades más básicas pueden desarrollarse a través de la dedicación y el trabajo duro. El talento natural es solo el punto de partida. Esta visión crea amor por el aprendizaje y una resiliencia esencial para grandes logros.</p>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">Cómo cultivar una mentalidad de crecimiento</h2>
-                    
-                    <ul>
-                        <li><strong>Abraza los desafíos:</strong> En lugar de evitar lo difícil, véelo como una oportunidad de crecer.</li>
-                        <li><strong>Persiste ante obstáculos:</strong> Los contratiempos son parte del proceso de aprendizaje, no señales de que debes rendirte.</li>
-                        <li><strong>Valora el esfuerzo:</strong> Reconoce que el esfuerzo es el camino hacia la maestría, no una señal de falta de talento.</li>
-                        <li><strong>Aprende de la crítica:</strong> La retroalimentación negativa es información valiosa, no un ataque personal.</li>
-                        <li><strong>Encuentra inspiración en el éxito de otros:</strong> En lugar de sentir amenaza, extrae lecciones de quienes han logrado lo que aspiras.</li>
-                    </ul>
-                    
-                    <h2 class="font-heading font-bold text-2xl text-emerald-800">El poder del "todavía"</h2>
-                    
-                    <p>Una de las técnicas más simples para cultivar la mentalidad de crecimiento es añadir la palabra "todavía" a tus afirmaciones negativas. "No puedo hacer esto" se convierte en "No puedo hacer esto todavía". "No soy bueno en esto" se transforma en "No soy bueno en esto todavía". Este pequeño cambio lingüístico abre la puerta a la posibilidad y al crecimiento futuro.</p>
-                `
-            }
-        ];
-        
-        // Page Templates
-        function getHomePage() {
-            const featuredArticles = articles.slice(0, 3);
-            const recentArticles = articles.slice(3, 9);
-            
-            return `
-                <div class="fade-in">
-                    <!-- Hero Section -->
-                    <section class="bg-gradient-to-br from-emerald-700 to-emerald-900 text-white py-16 md:py-24">
-                        <div class="max-w-6xl mx-auto px-4">
-                            <div class="max-w-3xl">
-                                <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                                    Transforma tu Productividad con Hábitos Efectivos
-                                </h1>
-                                <p class="text-xl text-emerald-100 mb-8 leading-relaxed">
-                                    Descubre estrategias probadas, técnicas de gestión del tiempo y consejos prácticos para alcanzar tus metas y vivir una vida más plena y organizada.
-                                </p>
-                                <a href="#" onclick="navigateTo('articles')" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl">
-                                    Explorar Artículos
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- Featured Articles -->
-                    <section class="py-16 bg-white">
-                        <div class="max-w-6xl mx-auto px-4">
-                            <h2 class="font-heading text-3xl font-bold text-emerald-800 mb-8">Artículos Destacados</h2>
-                            <div class="grid md:grid-cols-3 gap-8">
-                                ${featuredArticles.map(article => `
-                                    <article class="bg-amber-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-amber-100">
-                                        <div class="h-48 bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
-                                            <span class="text-6xl">${article.image}</span>
-                                        </div>
-                                        <div class="p-6">
-                                            <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">${article.category}</span>
-                                            <h3 class="font-heading font-bold text-xl text-gray-800 mt-2 mb-3 hover:text-emerald-700 transition-colors">
-                                                <a href="#" onclick="viewArticle(${article.id})">${article.title}</a>
-                                            </h3>
-                                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">${article.excerpt}</p>
-                                            <div class="flex items-center justify-between text-sm text-gray-500">
-                                                <span>${article.date}</span>
-                                                <span>${article.readTime} lectura</span>
-                                            </div>
-                                        </div>
-                                    </article>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- Recent Articles -->
-                    <section class="py-16 bg-amber-50">
-                        <div class="max-w-6xl mx-auto px-4">
-                            <h2 class="font-heading text-3xl font-bold text-emerald-800 mb-8">Artículos Recientes</h2>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                ${recentArticles.map(article => `
-                                    <article class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow flex gap-4 border border-amber-100">
-                                        <div class="w-16 h-16 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <span class="text-3xl">${article.image}</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">${article.category}</span>
-                                            <h3 class="font-heading font-bold text-lg text-gray-800 mt-1 mb-2 hover:text-emerald-700 transition-colors">
-                                                <a href="#" onclick="viewArticle(${article.id})">${article.title}</a>
-                                            </h3>
-                                            <p class="text-gray-600 text-sm line-clamp-2">${article.excerpt}</p>
-                                            <div class="flex items-center gap-4 mt-3 text-sm text-gray-500">
-                                                <span>${article.date}</span>
-                                                <span>•</span>
-                                                <span>${article.readTime} lectura</span>
-                                            </div>
-                                        </div>
-                                    </article>
-                                `).join('')}
-                            </div>
-                            <div class="text-center mt-10">
-                                <a href="#" onclick="navigateTo('articles')" class="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                                    Ver todos los artículos
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- Newsletter Section -->
-                    <section class="py-16 bg-emerald-800 text-white">
-                        <div class="max-w-3xl mx-auto px-4 text-center">
-                            <h2 class="font-heading text-3xl font-bold mb-4">Suscríbete a Nuestro Newsletter</h2>
-                            <p class="text-emerald-100 mb-8">Recibe los mejores consejos de productividad directamente en tu bandeja de entrada cada semana.</p>
-                            <form onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <label for="newsletter-email" class="sr-only">Correo electrónico</label>
-                                <input type="email" id="newsletter-email" placeholder="tu@email.com" required class="flex-1 max-w-md px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400">
-                                <button type="submit" class="bg-amber-500 hover:bg-amber-400 text-gray-900 px-8 py-3 rounded-lg font-bold transition-colors">
-                                    Suscribirme
-                                </button>
-                            </form>
-                            <p class="text-emerald-200 text-sm mt-4">Respetamos tu privacidad. Puedes darte de baja en cualquier momento.</p>
-                        </div>
-                    </section>
-                </div>
-            `;
-        }
-        
-        function getArticlesPage() {
-            const categories = [...new Set(articles.map(a => a.category))];
-            
-            return `
-                <div class="fade-in py-12">
-                    <div class="max-w-6xl mx-auto px-4">
-                        <header class="mb-12">
-                            <h1 class="font-heading text-4xl font-bold text-emerald-800 mb-4">Todos los Artículos</h1>
-                            <p class="text-gray-600 text-lg">Explora nuestra colección completa de guías y consejos sobre productividad.</p>
-                        </header>
-                        
-                        <!-- Category Filter -->
-                        <div class="flex flex-wrap gap-3 mb-10">
-                            <button onclick="filterArticles('all')" class="px-4 py-2 rounded-full bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-600 transition-colors">
-                                Todos
-                            </button>
-                            ${categories.map(cat => `
-                                <button onclick="filterArticles('${cat}')" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold text-sm hover:bg-emerald-100 hover:text-emerald-700 transition-colors">
-                                    ${cat}
-                                </button>
-                            `).join('')}
-                        </div>
-                        
-                        <!-- Articles Grid -->
-                        <div id="articles-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            ${articles.map(article => `
-                                <article class="article-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100" data-category="${article.category}">
-                                    <div class="h-40 bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
-                                        <span class="text-5xl">${article.image}</span>
-                                    </div>
-                                    <div class="p-6">
-                                        <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">${article.category}</span>
-                                        <h3 class="font-heading font-bold text-lg text-gray-800 mt-2 mb-3 hover:text-emerald-700 transition-colors line-clamp-2">
-                                            <a href="#" onclick="viewArticle(${article.id})">${article.title}</a>
-                                        </h3>
-                                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">${article.excerpt}</p>
-                                        <div class="flex items-center justify-between text-sm text-gray-500">
-                                            <span>${article.date}</span>
-                                            <span>${article.readTime}</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function getArticlePage(articleId) {
-            const article = articles.find(a => a.id === articleId);
-            if (!article) return getHomePage();
-            
-            const relatedArticles = articles.filter(a => a.id !== articleId && a.category === article.category).slice(0, 3);
-            
-            return `
-                <div class="fade-in">
-                    <article class="py-12">
-                        <div class="max-w-4xl mx-auto px-4">
-                            <!-- Breadcrumb -->
-                            <nav class="mb-8 text-sm">
-                                <a href="#" onclick="navigateTo('home')" class="text-emerald-600 hover:text-emerald-800">Inicio</a>
-                                <span class="mx-2 text-gray-400">/</span>
-                                <a href="#" onclick="navigateTo('articles')" class="text-emerald-600 hover:text-emerald-800">Artículos</a>
-                                <span class="mx-2 text-gray-400">/</span>
-                                <span class="text-gray-600">${article.category}</span>
-                            </nav>
-                            
-                            <!-- Article Header -->
-                            <header class="mb-10">
-                                <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold mb-4">${article.category}</span>
-                                <h1 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">${article.title}</h1>
-                                <div class="flex flex-wrap items-center gap-4 text-gray-600">
-                                    <span class="flex items-center gap-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                        ${article.date}
-                                    </span>
-                                    <span class="flex items-center gap-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
-                                        ${article.readTime} de lectura
-                                    </span>
-                                </div>
-                            </header>
-                            
-                            <!-- Featured Image -->
-                            <div class="h-64 md:h-80 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-2xl flex items-center justify-center mb-10 shadow-lg">
-                                <span class="text-8xl">${article.image}</span>
-                            </div>
-                            
-                            <!-- Article Content -->
-                            <div class="article-content prose prose-lg max-w-none text-gray-700">
-                                ${article.content}
-                            </div>
-                            
-                            <!-- Share Section -->
-                            <div class="mt-12 pt-8 border-t border-gray-200">
-                                <h3 class="font-heading font-bold text-lg text-gray-800 mb-4">Comparte este artículo</h3>
-                                <div class="flex gap-3">
-                                    <button class="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors" aria-label="Compartir en Facebook">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-                                    </button>
-                                    <button class="p-3 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition-colors" aria-label="Compartir en Twitter">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-                                    </button>
-                                    <button class="p-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors" aria-label="Compartir en LinkedIn">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Related Articles -->
-                    ${relatedArticles.length > 0 ? `
-                        <section class="py-12 bg-amber-50">
-                            <div class="max-w-6xl mx-auto px-4">
-                                <h2 class="font-heading text-2xl font-bold text-emerald-800 mb-8">Artículos Relacionados</h2>
-                                <div class="grid md:grid-cols-3 gap-6">
-                                    ${relatedArticles.map(related => `
-                                        <article class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                                            <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">${related.category}</span>
-                                            <h3 class="font-heading font-bold text-lg text-gray-800 mt-2 mb-3 hover:text-emerald-700 transition-colors">
-                                                <a href="#" onclick="viewArticle(${related.id})">${related.title}</a>
-                                            </h3>
-                                            <p class="text-gray-600 text-sm">${related.excerpt}</p>
-                                        </article>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        </section>
-                    ` : ''}
-                </div>
-            `;
-        }
-        
-        function getAboutPage() {
-            return `
-                <div class="fade-in py-12">
-                    <div class="max-w-4xl mx-auto px-4">
-                        <header class="mb-12 text-center">
-                            <h1 class="font-heading text-4xl font-bold text-emerald-800 mb-4">Sobre Nosotros</h1>
-                            <p class="text-gray-600 text-lg">Conoce la historia y misión detrás de Portal de Productividad.</p>
-                        </header>
-                        
-                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <div class="h-64 bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
-                                <span class="text-8xl">🎯</span>
-                            </div>
-                            
-                            <div class="p-8 md:p-12">
-                                <section class="mb-10">
-                                    <h2 class="font-heading text-2xl font-bold text-emerald-800 mb-4">Nuestra Misión</h2>
-                                    <p class="text-gray-700 leading-relaxed mb-4">
-                                        En Portal de Productividad, creemos que todos merecen las herramientas y el conocimiento para alcanzar su máximo potencial. Nuestra misión es democratizar las mejores prácticas de productividad, haciéndolas accesibles y aplicables para cualquier persona, independientemente de su contexto profesional o personal.
-                                    </p>
-                                    <p class="text-gray-700 leading-relaxed">
-                                        Nos dedicamos a investigar, filtrar y presentar únicamente contenido que haya demostrado resultados reales. Rechazamos las modas pasajeras y los consejos vacíos; cada artículo que publicamos está respaldado por evidencia científica o por la experiencia comprobada de profesionales exitosos.
-                                    </p>
-                                </section>
-                                
-                                <section class="mb-10">
-                                    <h2 class="font-heading text-2xl font-bold text-emerald-800 mb-4">Nuestra Historia</h2>
-                                    <p class="text-gray-700 leading-relaxed mb-4">
-                                        Portal de Productividad nació en 2023 de una frustración compartida: la abundancia de información sobre productividad que, paradójicamente, nos hacía menos productivos. Nos encontramos perdidos en un mar de libros, cursos y aplicaciones que prometían transformarnos pero que rara vez cumplían.
-                                    </p>
-                                    <p class="text-gray-700 leading-relaxed">
-                                        Decidimos crear el recurso que hubiéramos querido tener: un lugar donde las mejores técnicas y estrategias estuvieran explicadas de forma clara, práctica y sin relleno. Hoy, miles de lectores confían en nosotros para mejorar su productividad personal y profesional.
-                                    </p>
-                                </section>
-                                
-                                <section class="mb-10">
-                                    <h2 class="font-heading text-2xl font-bold text-emerald-800 mb-4">Nuestros Valores</h2>
-                                    <div class="grid md:grid-cols-2 gap-6">
-                                        <div class="bg-amber-50 rounded-lg p-6">
-                                            <div class="text-3xl mb-3">🔬</div>
-                                            <h3 class="font-heading font-bold text-lg text-gray-800 mb-2">Rigor</h3>
-                                            <p class="text-gray-600 text-sm">Solo publicamos contenido respaldado por investigación o experiencia comprobada.</p>
-                                        </div>
-                                        <div class="bg-amber-50 rounded-lg p-6">
-                                            <div class="text-3xl mb-3">✨</div>
-                                            <h3 class="font-heading font-bold text-lg text-gray-800 mb-2">Claridad</h3>
-                                            <p class="text-gray-600 text-sm">Explicamos conceptos complejos de forma simple y directa, sin jerga innecesaria.</p>
-                                        </div>
-                                        <div class="bg-amber-50 rounded-lg p-6">
-                                            <div class="text-3xl mb-3">🎯</div>
-                                            <h3 class="font-heading font-bold text-lg text-gray-800 mb-2">Practicidad</h3>
-                                            <p class="text-gray-600 text-sm">Cada consejo incluye pasos concretos que puedes aplicar inmediatamente.</p>
-                                        </div>
-                                        <div class="bg-amber-50 rounded-lg p-6">
-                                            <div class="text-3xl mb-3">❤️</div>
-                                            <h3 class="font-heading font-bold text-lg text-gray-800 mb-2">Humanidad</h3>
-                                            <p class="text-gray-600 text-sm">Reconocemos que la productividad es un medio, no un fin. El bienestar siempre primero.</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                
-                                <section>
-                                    <h2 class="font-heading text-2xl font-bold text-emerald-800 mb-4">El Equipo</h2>
-                                    <p class="text-gray-700 leading-relaxed mb-6">
-                                        Somos un equipo diverso de escritores, investigadores y profesionales apasionados por la productividad y el desarrollo personal. Cada miembro aporta su perspectiva única, enriqueciendo el contenido que ofrecemos.
-                                    </p>
-                                    <div class="grid md:grid-cols-3 gap-6">
-                                        <div class="text-center">
-                                            <div class="w-24 h-24 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                                <span class="text-4xl">👨‍💼</span>
-                                            </div>
-                                            <h3 class="font-heading font-bold text-gray-800">Carlos Mendoza</h3>
-                                            <p class="text-emerald-600 text-sm">Fundador y Editor</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="w-24 h-24 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                                <span class="text-4xl">👩‍🔬</span>
-                                            </div>
-                                            <h3 class="font-heading font-bold text-gray-800">Laura Vega</h3>
-                                            <p class="text-emerald-600 text-sm">Investigadora</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="w-24 h-24 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                                <span class="text-4xl">👨‍💻</span>
-                                            </div>
-                                            <h3 class="font-heading font-bold text-gray-800">Miguel Torres</h3>
-                                            <p class="text-emerald-600 text-sm">Escritor Senior</p>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function getContactPage() {
-            const email = config.contact_email || defaultConfig.contact_email;
-            
-            return `
-                <div class="fade-in py-12">
-                    <div class="max-w-4xl mx-auto px-4">
-                        <header class="mb-12 text-center">
-                            <h1 class="font-heading text-4xl font-bold text-emerald-800 mb-4">Contacto</h1>
-                            <p class="text-gray-600 text-lg">¿Tienes preguntas, sugerencias o colaboraciones? Nos encantaría escucharte.</p>
-                        </header>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <!-- Contact Form -->
-                            <div class="bg-white rounded-2xl shadow-lg p-8">
-                                <h2 class="font-heading text-2xl font-bold text-emerald-800 mb-6">Envíanos un Mensaje</h2>
-                                <form onsubmit="handleContactSubmit(event)" id="contact-form">
-                                    <div class="mb-5">
-                                        <label for="contact-name" class="block text-gray-700 font-semibold mb-2">Nombre</label>
-                                        <input type="text" id="contact-name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Tu nombre">
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="contact-email" class="block text-gray-700 font-semibold mb-2">Email</label>
-                                        <input type="email" id="contact-email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="tu@email.com">
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="contact-subject" class="block text-gray-700 font-semibold mb-2">Asunto</label>
-                                        <input type="text" id="contact-subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="¿En qué podemos ayudarte?">
-                                    </div>
-                                    <div class="mb-6">
-                                        <label for="contact-message" class="block text-gray-700 font-semibold mb-2">Mensaje</label>
-                                        <textarea id="contact-message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none" placeholder="Escribe tu mensaje aquí..."></textarea>
-                                    </div>
-                                    <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white py-3 rounded-lg font-bold transition-colors">
-                                        Enviar Mensaje
-                                    </button>
-                                </form>
-                                <div id="contact-success" class="hidden mt-6 p-4 bg-emerald-100 text-emerald-800 rounded-lg text-center">
-                                    ✅ ¡Mensaje enviado con éxito! Te responderemos pronto.
-                                </div>
-                            </div>
-                            
-                            <!-- Contact Info -->
-                            <div>
-                                <div class="bg-emerald-800 text-white rounded-2xl p-8 mb-6">
-                                    <h2 class="font-heading text-2xl font-bold mb-6">Información de Contacto</h2>
-                                    <div class="space-y-4">
-                                        <div class="flex items-start gap-4">
-                                            <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h3 class="font-semibold">Email</h3>
-                                                <p class="text-emerald-200" id="contact-email-display">${email}</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-start gap-4">
-                                            <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h3 class="font-semibold">Horario de Respuesta</h3>
-                                                <p class="text-emerald-200">Lunes a Viernes, 9:00 - 18:00</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-start gap-4">
-                                            <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h3 class="font-semibold">Ubicación</h3>
-                                                <p class="text-emerald-200">Madrid, España</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="bg-amber-100 rounded-2xl p-8">
-                                    <h3 class="font-heading text-xl font-bold text-emerald-800 mb-4">Colaboraciones</h3>
-                                    <p class="text-gray-700 mb-4">
-                                        ¿Eres experto en productividad y te gustaría contribuir con un artículo? ¿Tienes una propuesta de colaboración? Nos encanta trabajar con personas apasionadas.
-                                    </p>
-                                    <p class="text-gray-600 text-sm">
-                                        Incluye "Colaboración" en el asunto de tu mensaje y cuéntanos sobre ti y tu propuesta.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function getPrivacyPage() {
-            return `
-                <div class="fade-in py-12">
-                    <div class="max-w-4xl mx-auto px-4">
-                        <header class="mb-12">
-                            <h1 class="font-heading text-4xl font-bold text-emerald-800 mb-4">Política de Privacidad</h1>
-                            <p class="text-gray-600">Última actualización: Enero 2024</p>
-                        </header>
-                        
-                        <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 article-content">
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">1. Introducción</h2>
-                                <p>En Portal de Productividad, nos tomamos muy en serio la privacidad de nuestros usuarios. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos tu información personal cuando visitas nuestro sitio web.</p>
-                                <p>Al utilizar nuestro sitio, aceptas las prácticas descritas en esta política de privacidad.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">2. Información que Recopilamos</h2>
-                                <p>Podemos recopilar los siguientes tipos de información:</p>
-                                <ul>
-                                    <li><strong>Información proporcionada voluntariamente:</strong> Nombre, dirección de correo electrónico y cualquier otra información que proporciones al suscribirte a nuestro newsletter o al contactarnos.</li>
-                                    <li><strong>Información de uso:</strong> Datos sobre cómo interactúas con nuestro sitio, incluyendo páginas visitadas, tiempo de permanencia y acciones realizadas.</li>
-                                    <li><strong>Información técnica:</strong> Dirección IP, tipo de navegador, dispositivo utilizado y sistema operativo.</li>
-                                    <li><strong>Cookies:</strong> Pequeños archivos de datos almacenados en tu dispositivo. Consulta nuestra Política de Cookies para más detalles.</li>
-                                </ul>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">3. Uso de la Información</h2>
-                                <p>Utilizamos la información recopilada para:</p>
-                                <ul>
-                                    <li>Proporcionar y mejorar nuestros servicios y contenido</li>
-                                    <li>Enviar newsletters y comunicaciones solicitadas</li>
-                                    <li>Responder a consultas y proporcionar soporte</li>
-                                    <li>Analizar el uso del sitio para mejorar la experiencia del usuario</li>
-                                    <li>Cumplir con obligaciones legales</li>
-                                    <li>Mostrar publicidad relevante a través de Google AdSense</li>
-                                </ul>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">4. Google AdSense y Publicidad</h2>
-                                <p>Utilizamos Google AdSense para mostrar anuncios en nuestro sitio. Google AdSense utiliza cookies para mostrar anuncios basados en las visitas previas de los usuarios a nuestro sitio u otros sitios web. Google y sus socios utilizan esta información para mostrar anuncios relevantes.</p>
-                                <p>Puedes optar por no recibir publicidad personalizada visitando la configuración de anuncios de Google en <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">https://www.google.com/settings/ads</a>.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">5. Compartir Información</h2>
-                                <p>No vendemos ni alquilamos tu información personal a terceros. Podemos compartir información en las siguientes circunstancias:</p>
-                                <ul>
-                                    <li>Con proveedores de servicios que nos ayudan a operar el sitio</li>
-                                    <li>Cuando sea requerido por ley o proceso legal</li>
-                                    <li>Para proteger nuestros derechos, propiedad o seguridad</li>
-                                </ul>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">6. Seguridad de Datos</h2>
-                                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción. Sin embargo, ningún método de transmisión por Internet es 100% seguro.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">7. Tus Derechos</h2>
-                                <p>Tienes derecho a:</p>
-                                <ul>
-                                    <li>Acceder a tu información personal</li>
-                                    <li>Rectificar datos inexactos</li>
-                                    <li>Solicitar la eliminación de tus datos</li>
-                                    <li>Oponerte al procesamiento de tus datos</li>
-                                    <li>Retirar tu consentimiento en cualquier momento</li>
-                                </ul>
-                                <p>Para ejercer estos derechos, contáctanos a través de nuestra página de contacto.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">8. Cambios en esta Política</h2>
-                                <p>Podemos actualizar esta política de privacidad periódicamente. Te notificaremos de cambios significativos publicando la nueva política en esta página con una fecha de actualización revisada.</p>
-                            </section>
-                            
-                            <section>
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">9. Contacto</h2>
-                                <p>Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de nuestra <a href="#" onclick="navigateTo('contact')" class="text-emerald-600 hover:text-emerald-800">página de contacto</a>.</p>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function getTermsPage() {
-            return `
-                <div class="fade-in py-12">
-                    <div class="max-w-4xl mx-auto px-4">
-                        <header class="mb-12">
-                            <h1 class="font-heading text-4xl font-bold text-emerald-800 mb-4">Términos y Condiciones</h1>
-                            <p class="text-gray-600">Última actualización: Enero 2024</p>
-                        </header>
-                        
-                        <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 article-content">
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">1. Aceptación de los Términos</h2>
-                                <p>Al acceder y utilizar Portal de Productividad, aceptas estar sujeto a estos términos y condiciones de uso. Si no estás de acuerdo con alguna parte de estos términos, te rogamos que no utilices nuestro sitio web.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">2. Uso del Sitio</h2>
-                                <p>El contenido de este sitio web es únicamente para tu información general y uso personal. Está sujeto a cambios sin previo aviso.</p>
-                                <p>Te comprometes a utilizar este sitio web de manera legal y de forma que no infrinja los derechos de terceros ni restrinja o impida el uso y disfrute del sitio por parte de terceros.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">3. Propiedad Intelectual</h2>
-                                <p>Todo el contenido incluido en este sitio, como texto, gráficos, logos, imágenes, clips de audio, descargas digitales y compilaciones de datos, es propiedad de Portal de Productividad o sus proveedores de contenido y está protegido por las leyes de propiedad intelectual.</p>
-                                <p>No puedes reproducir, distribuir, modificar, crear obras derivadas, exhibir públicamente, ejecutar públicamente, republicar, descargar, almacenar o transmitir cualquier material de nuestro sitio sin nuestro consentimiento previo por escrito.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">4. Contenido del Usuario</h2>
-                                <p>Al enviar contenido a nuestro sitio (comentarios, formularios de contacto, etc.), nos otorgas una licencia no exclusiva, libre de regalías, perpetua e irrevocable para usar, reproducir, modificar y distribuir dicho contenido.</p>
-                                <p>Eres responsable de asegurar que cualquier contenido que proporciones no infrinja derechos de terceros ni viole ninguna ley aplicable.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">5. Descargo de Responsabilidad</h2>
-                                <p>El contenido de este sitio se proporciona "tal cual" sin garantías de ningún tipo, expresas o implícitas. No garantizamos la exactitud, integridad o utilidad de cualquier información en el sitio.</p>
-                                <p>Los consejos y técnicas de productividad compartidos son de naturaleza general y no constituyen asesoramiento profesional. Los resultados pueden variar según las circunstancias individuales.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">6. Enlaces a Terceros</h2>
-                                <p>Nuestro sitio puede contener enlaces a sitios web de terceros. Estos enlaces se proporcionan únicamente para tu conveniencia. No tenemos control sobre el contenido de estos sitios y no asumimos responsabilidad por ellos.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">7. Publicidad</h2>
-                                <p>Este sitio muestra publicidad a través de Google AdSense. Los anuncios mostrados son proporcionados por terceros y no representan necesariamente nuestras opiniones o recomendaciones. No somos responsables del contenido de los anuncios ni de los productos o servicios anunciados.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">8. Limitación de Responsabilidad</h2>
-                                <p>En ningún caso Portal de Productividad, sus directores, empleados o agentes serán responsables de daños directos, indirectos, incidentales, especiales o consecuentes que resulten del uso o la imposibilidad de uso del sitio.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">9. Modificaciones</h2>
-                                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio. Tu uso continuado del sitio después de cualquier cambio constituye tu aceptación de los nuevos términos.</p>
-                            </section>
-                            
-                            <section>
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">10. Ley Aplicable</h2>
-                                <p>Estos términos se regirán e interpretarán de acuerdo con las leyes de España, sin dar efecto a ningún principio de conflicto de leyes.</p>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function getCookiesPage() {
-            return `
-                <div class="fade-in py-12">
-                    <div class="max-w-4xl mx-auto px-4">
-                        <header class="mb-12">
-                            <h1 class="font-heading text-4xl font-bold text-emerald-800 mb-4">Política de Cookies</h1>
-                            <p class="text-gray-600">Última actualización: Enero 2024</p>
-                        </header>
-                        
-                        <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 article-content">
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">1. ¿Qué son las Cookies?</h2>
-                                <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Son ampliamente utilizadas para hacer que los sitios web funcionen de manera más eficiente, así como para proporcionar información a los propietarios del sitio.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">2. Tipos de Cookies que Utilizamos</h2>
-                                
-                                <h3 class="font-heading font-bold text-xl text-gray-800 mt-6 mb-3">Cookies Esenciales</h3>
-                                <p>Estas cookies son necesarias para el funcionamiento básico del sitio web. Sin ellas, el sitio no funcionaría correctamente.</p>
-                                
-                                <h3 class="font-heading font-bold text-xl text-gray-800 mt-6 mb-3">Cookies de Rendimiento y Análisis</h3>
-                                <p>Utilizamos estas cookies para recopilar información sobre cómo los visitantes utilizan nuestro sitio. Esta información nos ayuda a mejorar el sitio. Todas las estadísticas son anónimas.</p>
-                                
-                                <h3 class="font-heading font-bold text-xl text-gray-800 mt-6 mb-3">Cookies de Publicidad (Google AdSense)</h3>
-                                <p>Google AdSense utiliza cookies para mostrar anuncios relevantes basados en tus visitas a este y otros sitios web. Google puede utilizar información sobre tus visitas para proporcionar anuncios personalizados sobre bienes y servicios que pueden interesarte.</p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">3. Cookies de Google AdSense</h2>
-                                <p>Este sitio utiliza Google AdSense, un servicio de publicidad proporcionado por Google Inc. Google AdSense utiliza las siguientes cookies:</p>
-                                <ul>
-                                    <li><strong>DSID:</strong> Utilizada para identificar a un usuario que ha iniciado sesión en sitios distintos de Google y recordar sus preferencias de publicidad personalizada</li>
-                                    <li><strong>IDE:</strong> Utilizada para mostrar anuncios de Google en sitios web que no son de Google</li>
-                                    <li><strong>__gads:</strong> Cookie asociada con DoubleClick for Publishers de Google</li>
-                                </ul>
-                                <p>Puedes obtener más información sobre cómo Google utiliza las cookies en publicidad en: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">https://policies.google.com/technologies/ads</a></p>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">4. Gestión de Cookies</h2>
-                                <p>Puedes controlar y gestionar las cookies de varias maneras:</p>
-                                <ul>
-                                    <li><strong>Configuración del navegador:</strong> Puedes configurar tu navegador para rechazar cookies o alertarte cuando se envíen cookies. Sin embargo, si desactivas las cookies, algunas partes del sitio pueden no funcionar correctamente.</li>
-                                    <li><strong>Configuración de Google:</strong> Puedes gestionar las preferencias de publicidad de Google en <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">https://www.google.com/settings/ads</a></li>
-                                    <li><strong>Herramientas de terceros:</strong> Puedes optar por no recibir cookies de publicidad conductual a través de la página de exclusión de Network Advertising Initiative: <a href="http://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">http://optout.networkadvertising.org/</a></li>
-                                </ul>
-                            </section>
-                            
-                            <section class="mb-8">
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">5. Cómo Desactivar las Cookies</h2>
-                                <p>La mayoría de los navegadores web te permiten controlar las cookies a través de sus configuraciones. A continuación encontrarás enlaces a las instrucciones de los navegadores más populares:</p>
-                                <ul>
-                                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">Google Chrome</a></li>
-                                    <li><a href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en-" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">Mozilla Firefox</a></li>
-                                    <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">Safari</a></li>
-                                    <li><a href="https://support.microsoft.com/es-es/help/4468242/microsoft-edge-browsing-data-and-privacy" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800">Microsoft Edge</a></li>
-                                </ul>
-                            </section>
-                            
-                            <section>
-                                <h2 class="font-heading font-bold text-2xl text-emerald-800 mb-4">6. Actualizaciones</h2>
-                                <p>Podemos actualizar esta política de cookies periódicamente. Te recomendamos revisar esta página regularmente para estar informado sobre cómo utilizamos las cookies.</p>
-                                <p>Si tienes preguntas sobre nuestra política de cookies, puedes contactarnos a través de nuestra <a href="#" onclick="navigateTo('contact')" class="text-emerald-600 hover:text-emerald-800">página de contacto</a>.</p>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Navigation Functions
-        function navigateTo(page) {
-            currentPage = page;
-            const mainContent = document.getElementById('main-content');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                switch(page) {
-                    case 'home':
-                        mainContent.innerHTML = getHomePage();
-                        break;
-                    case 'articles':
-                        mainContent.innerHTML = getArticlesPage();
-                        break;
-                    case 'about':
-                        mainContent.innerHTML = getAboutPage();
-                        break;
-                    case 'contact':
-                        mainContent.innerHTML = getContactPage();
-                        break;
-                    case 'privacy':
-                        mainContent.innerHTML = getPrivacyPage();
-                        break;
-                    case 'terms':
-                        mainContent.innerHTML = getTermsPage();
-                        break;
-                    case 'cookies':
-                        mainContent.innerHTML = getCookiesPage();
-                        break;
-                    default:
-                        mainContent.innerHTML = getHomePage();
-                }
-            }, 100);
-            
-            // Close mobile menu
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }
-        
-        function viewArticle(articleId) {
-            currentPage = 'article';
-            const mainContent = document.getElementById('main-content');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                mainContent.innerHTML = getArticlePage(articleId);
-            }, 100);
-            
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }
-        
-        function filterArticles(category) {
-            const cards = document.querySelectorAll('.article-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-        
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-        
-        // Form Handlers
-        function handleNewsletterSubmit(e) {
-            e.preventDefault();
-            const email = document.getElementById('newsletter-email').value;
-            document.getElementById('newsletter-email').value = '';
-            
-            // Create toast notification
-            const toast = document.createElement('div');
-            toast.className = 'fixed top-24 right-4 bg-emerald-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 fade-in';
-            toast.textContent = '✅ ¡Gracias por suscribirte!';
-            document.body.appendChild(toast);
-            
-            setTimeout(() => toast.remove(), 3000);
-        }
-        
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            document.getElementById('contact-form').classList.add('hidden');
-            document.getElementById('contact-success').classList.remove('hidden');
-        }
-        
-        // Cookie Functions
-        function acceptCookies() {
-            document.getElementById('cookie-banner').classList.add('hidden');
-            localStorage.setItem('cookiesAccepted', 'true');
-        }
-        
-        function rejectCookies() {
-            document.getElementById('cookie-banner').classList.add('hidden');
-            localStorage.setItem('cookiesAccepted', 'false');
-        }
-        
-        function checkCookieConsent() {
-            const consent = localStorage.getItem('cookiesAccepted');
-            if (consent === null) {
-                document.getElementById('cookie-banner').classList.remove('hidden');
-            }
-        }
-        
-        // Element SDK Integration
-        async function onConfigChange(newConfig) {
-            const siteName = newConfig.site_name || defaultConfig.site_name;
-            const tagline = newConfig.site_tagline || defaultConfig.site_tagline;
-            const email = newConfig.contact_email || defaultConfig.contact_email;
-            
-            // Update header
-            const headerSiteName = document.getElementById('header-site-name');
-            if (headerSiteName) headerSiteName.textContent = siteName;
-            
-            const headerTagline = document.getElementById('header-tagline');
-            if (headerTagline) headerTagline.textContent = tagline;
-            
-            // Update footer
-            const footerSiteName = document.getElementById('footer-site-name');
-            if (footerSiteName) footerSiteName.textContent = siteName;
-            
-            // Update contact page if visible
-            const contactEmailDisplay = document.getElementById('contact-email-display');
-            if (contactEmailDisplay) contactEmailDisplay.textContent = email;
-        }
-        
-        function mapToCapabilities(config) {
-            return {
-                recolorables: [],
-                borderables: [],
-                fontEditable: undefined,
-                fontSizeable: undefined
-            };
-        }
-        
-        function mapToEditPanelValues(config) {
-            return new Map([
-                ['site_name', config.site_name || defaultConfig.site_name],
-                ['site_tagline', config.site_tagline || defaultConfig.site_tagline],
-                ['contact_email', config.contact_email || defaultConfig.contact_email]
-            ]);
-        }
-        
-        // Initialize
-        async function init() {
-            // Initialize Element SDK
-            if (window.elementSdk) {
-                await window.elementSdk.init({
-                    defaultConfig,
-                    onConfigChange,
-                    mapToCapabilities,
-                    mapToEditPanelValues
-                });
-                config = { ...defaultConfig, ...window.elementSdk.config };
-            }
-            
-            // Load home page
-            navigateTo('home');
-            
-            // Check cookie consent
-            setTimeout(checkCookieConsent, 1500);
-        }
-        
-        init();
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cf1c6c084cca658',t:'MTc3MTI5NDUyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-4 space-y-3 text-sm font-medium">
+     <a href="#inicio" class="block py-2" style="color: #2D2A26;">Inicio</a> <a href="#articulos" class="block py-2" style="color: #2D2A26;">Artículos</a> <a href="#sobre" class="block py-2" style="color: #2D2A26;">Sobre Nosotros</a> <a href="#contacto" class="block py-2" style="color: #2D2A26;">Contacto</a>
+    </div>
+   </header><!-- HERO -->
+   <section id="inicio" class="w-full hero-gradient fade-in" style="--bg-color:#FAF7F2;--accent-color:#C45D3E;">
+    <div class="max-w-6xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+     <div>
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-5" style="background-color: #C45D3E; color: #FAF7F2;" id="hero-badge">ARTÍCULO DESTACADO</span>
+      <h1 class="font-heading text-4xl md:text-5xl leading-tight mb-5" id="hero-title" style="color: #2D2A26;">El futuro del diseño digital en la era creativa</h1>
+      <p class="text-lg leading-relaxed mb-7 opacity-80" id="hero-excerpt" style="color: #2D2A26;">Exploramos cómo las nuevas herramientas están transformando la manera en que creamos, colaboramos y damos vida a nuestras ideas.</p><button class="px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90" style="background-color: #C45D3E; color: #FAF7F2;" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'})"> Leer más <span class="ml-1">→</span> </button>
+     </div>
+     <div class="rounded-2xl overflow-hidden aspect-[4/3]" style="background: linear-gradient(145deg, #C45D3E 0%, #D4896E 50%, #E8C4A0 100%);">
+      <div class="w-full h-full flex items-center justify-center">
+       <svg width="120" height="120" viewbox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="50" stroke="#FAF7F2" stroke-width="2" opacity="0.4" /><circle cx="60" cy="60" r="30" stroke="#FAF7F2" stroke-width="2" opacity="0.6" /><circle cx="60" cy="60" r="10" fill="#FAF7F2" opacity="0.8" />
+       </svg>
+      </div>
+     </div>
+    </div>
+   </section><!-- TAGLINE BAR -->
+   <div class="w-full py-4 text-center" style="background-color: #2D2A26;">
+    <p class="text-sm tracking-widest font-medium uppercase" id="tagline-bar" style="color: #FAF7F2;">Ideas que inspiran · Historias que conectan</p>
+   </div><!-- ARTICLES -->
+   <section id="articulos" class="w-full py-16">
+    <div class="max-w-6xl mx-auto px-5">
+     <div class="flex items-center justify-between mb-10">
+      <h2 class="font-heading text-3xl" style="color: #2D2A26;">Últimos Artículos</h2>
+      <div class="hidden sm:flex gap-2" id="category-filters">
+       <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#C45D3E;color:#FAF7F2;" onclick="filterArticles('all',this)">Todos</button> <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#E8E2D9;color:#2D2A26;" onclick="filterArticles('tech',this)">Tecnología</button> <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#E8E2D9;color:#2D2A26;" onclick="filterArticles('vida',this)">Estilo de Vida</button> <button class="category-pill px-4 py-1.5 rounded-full text-xs font-semibold" style="background-color:#E8E2D9;color:#2D2A26;" onclick="filterArticles('creatividad',this)">Creatividad</button>
+      </div>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7" id="articles-grid">
+     </div>
+    </div>
+   </section><!-- NEWSLETTER -->
+   <section class="w-full py-16" style="background-color: #2D2A26;">
+    <div class="max-w-xl mx-auto px-5 text-center">
+     <h2 class="font-heading text-3xl mb-3" style="color: #FAF7F2;">Suscríbete al boletín</h2>
+     <p class="mb-7 opacity-70" style="color: #FAF7F2;">Recibe los mejores artículos directamente en tu bandeja de entrada, cada semana.</p>
+     <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3">
+      <label for="email-input" class="sr-only">Correo electrónico</label> <input id="email-input" type="email" placeholder="tu@email.com" required class="flex-1 px-4 py-3 rounded-lg text-sm outline-none" style="background-color: #3D3A36; color: #FAF7F2; border: 1px solid #5A5650;"> <button type="submit" class="px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90" style="background-color: #C45D3E; color: #FAF7F2;">Suscribirme</button>
+     </form>
+     <p id="subscribe-msg" class="mt-4 text-sm hidden" style="color: #D4896E;"></p>
+    </div>
+   </section><!-- ABOUT -->
+   <section id="sobre" class="w-full py-16">
+    <div class="max-w-4xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+     <div class="rounded-2xl aspect-square flex items-center justify-center" style="background: linear-gradient(135deg, #E8E2D9 0%, #D4C5B0 100%);">
+      <svg width="100" height="100" viewbox="0 0 100 100" fill="none"><rect x="15" y="20" width="30" height="60" rx="4" stroke="#C45D3E" stroke-width="2.5" /><rect x="55" y="30" width="30" height="50" rx="4" stroke="#C45D3E" stroke-width="2.5" /><line x1="22" y1="35" x2="38" y2="35" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="22" y1="42" x2="38" y2="42" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="22" y1="49" x2="33" y2="49" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="62" y1="45" x2="78" y2="45" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" /><line x1="62" y1="52" x2="78" y2="52" stroke="#C45D3E" stroke-width="1.5" opacity="0.5" />
+      </svg>
+     </div>
+     <div>
+      <h2 class="font-heading text-3xl mb-5" style="color: #2D2A26;">Sobre Nosotros</h2>
+      <p class="leading-relaxed opacity-80 mb-5" id="about-text" style="color: #2D2A26;">Somos un equipo apasionado por compartir ideas, tendencias y reflexiones sobre tecnología, creatividad y estilo de vida. Nuestro objetivo es inspirarte con contenido original y de calidad.</p>
+      <div class="flex gap-8">
+       <div><span class="font-heading text-2xl block" style="color: #C45D3E;">150+</span><span class="text-xs opacity-60">Artículos</span>
+       </div>
+       <div><span class="font-heading text-2xl block" style="color: #C45D3E;">12K</span><span class="text-xs opacity-60">Lectores</span>
+       </div>
+       <div><span class="font-heading text-2xl block" style="color: #C45D3E;">3</span><span class="text-xs opacity-60">Años</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CONTACT -->
+   <section id="contacto" class="w-full py-16" style="background-color: #F0EBE3;">
+    <div class="max-w-xl mx-auto px-5">
+     <h2 class="font-heading text-3xl mb-3 text-center" style="color: #2D2A26;">Contacto</h2>
+     <p class="text-center mb-8 opacity-70" style="color: #2D2A26;">¿Tienes una idea o colaboración en mente? Escríbenos.</p>
+     <form onsubmit="handleContact(event)" class="space-y-4">
+      <div>
+       <label for="contact-name" class="block text-sm font-medium mb-1" style="color: #2D2A26;">Nombre</label> <input id="contact-name" type="text" required class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#fff;border:1px solid #E8E2D9;color:#2D2A26;">
+      </div>
+      <div>
+       <label for="contact-email" class="block text-sm font-medium mb-1" style="color: #2D2A26;">Correo</label> <input id="contact-email" type="email" required class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#fff;border:1px solid #E8E2D9;color:#2D2A26;">
+      </div>
+      <div>
+       <label for="contact-msg" class="block text-sm font-medium mb-1" style="color: #2D2A26;">Mensaje</label> <textarea id="contact-msg" rows="4" required class="w-full px-4 py-3 rounded-lg text-sm outline-none resize-none" style="background:#fff;border:1px solid #E8E2D9;color:#2D2A26;"></textarea>
+      </div><button type="submit" class="w-full py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90" style="background-color:#C45D3E;color:#FAF7F2;">Enviar mensaje</button>
+      <p id="contact-success" class="text-sm text-center hidden" style="color:#C45D3E;"></p>
+     </form>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="w-full py-10" style="background-color: #2D2A26;">
+    <div class="max-w-6xl mx-auto px-5">
+     <div class="grid sm:grid-cols-3 gap-8 mb-8">
+      <div>
+       <span class="font-heading text-lg" id="footer-brand" style="color: #FAF7F2;">Lumina</span>
+       <p class="text-sm mt-2 opacity-50" style="color: #FAF7F2;">Contenido original que inspira.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold text-sm mb-3" style="color: #FAF7F2;">Secciones</h4>
+       <div class="space-y-2 text-sm opacity-60" style="color: #FAF7F2;">
+        <a href="#inicio" class="block hover:opacity-100">Inicio</a> <a href="#articulos" class="block hover:opacity-100">Artículos</a> <a href="#sobre" class="block hover:opacity-100">Sobre Nosotros</a>
+       </div>
+      </div>
+      <div>
+       <h4 class="font-semibold text-sm mb-3" style="color: #FAF7F2;">Legal</h4>
+       <div class="space-y-2 text-sm opacity-60" style="color: #FAF7F2;">
+        <a href="#" class="block hover:opacity-100" onclick="showPolicy('privacy')">Política de Privacidad</a> <a href="#" class="block hover:opacity-100" onclick="showPolicy('terms')">Términos de Uso</a> <a href="#" class="block hover:opacity-100" onclick="showPolicy('cookies')">Política de Cookies</a>
+       </div>
+      </div>
+     </div>
+     <div class="border-t pt-6 text-center text-xs opacity-40" style="border-color: #5A5650; color: #FAF7F2;" id="footer-text">
+      © 2024 Lumina. Todos los derechos reservados.
+     </div>
+    </div>
+   </footer><!-- POLICY MODAL -->
+   <div id="policy-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-5" style="background:rgba(0,0,0,0.6);" onclick="if(event.target===this)closePolicyModal()">
+    <div class="w-full max-w-2xl max-h-[80%] rounded-2xl overflow-auto p-8" style="background:#FAF7F2;">
+     <div class="flex justify-between items-center mb-5">
+      <h3 class="font-heading text-2xl" id="policy-title" style="color:#2D2A26;"></h3><button onclick="closePolicyModal()" class="p-1 rounded-lg hover:opacity-70"><i data-lucide="x" style="width:20px;height:20px;color:#2D2A26;"></i></button>
+     </div>
+     <div id="policy-content" class="text-sm leading-relaxed opacity-80" style="color:#2D2A26;"></div>
+    </div>
+   </div>
+  </div>
+  <script>
+  // Color variables for inline handlers
+  let accentColor = '#C45D3E';
+  let textColor = '#2D2A26';
+  let bgColor = '#FAF7F2';
+  let surfaceColor = '#E8E2D9';
+  let secondaryAction = '#5A5650';
+
+  const articles = [
+    { id:1, cat:'tech', title:'Inteligencia artificial y creatividad: aliados inesperados', excerpt:'Cómo la IA está potenciando el proceso creativo en lugar de reemplazarlo.', date:'15 Dic 2024', read:'5 min' },
+    { id:2, cat:'vida', title:'Minimalismo digital: menos pantallas, más vida', excerpt:'Estrategias para reducir el ruido digital y recuperar tu atención.', date:'12 Dic 2024', read:'4 min' },
+    { id:3, cat:'creatividad', title:'El poder del boceto rápido en el diseño', excerpt:'Por qué los mejores diseñadores siguen empezando con lápiz y papel.', date:'10 Dic 2024', read:'3 min' },
+    { id:4, cat:'tech', title:'Tendencias web que dominarán el 2025', excerpt:'Desde micro-animaciones hasta interfaces conversacionales.', date:'8 Dic 2024', read:'6 min' },
+    { id:5, cat:'vida', title:'Rutinas matutinas de personas altamente creativas', excerpt:'Hábitos simples que transforman tu productividad y bienestar.', date:'5 Dic 2024', read:'4 min' },
+    { id:6, cat:'creatividad', title:'Fotografía con smartphone: guía esencial', excerpt:'Técnicas profesionales que puedes aplicar con tu teléfono.', date:'2 Dic 2024', read:'7 min' },
+  ];
+
+  const catColors = { tech:'#3B7DD8', vida:'#2DA06D', creatividad:'#C45D3E' };
+  const catLabels = { tech:'Tecnología', vida:'Estilo de Vida', creatividad:'Creatividad' };
+  let currentFilter = 'all';
+  let expandedArticle = null;
+
+  function renderArticles(filter) {
+    const grid = document.getElementById('articles-grid');
+    grid.innerHTML = '';
+    const filtered = filter === 'all' ? articles : articles.filter(a => a.cat === filter);
+    filtered.forEach((a, i) => {
+      const card = document.createElement('div');
+      card.className = `article-card rounded-2xl overflow-hidden cursor-pointer fade-in fade-in-delay-${i % 4}`;
+      card.dataset.cat = a.cat;
+      card.style.background = surfaceColor;
+      card.onclick = () => toggleArticle(a.id);
+      card.innerHTML = `
+        <div class="h-40 flex items-center justify-center" style="background:linear-gradient(135deg, ${catColors[a.cat]}22, ${catColors[a.cat]}44);">
+          <span class="font-heading text-5xl" style="color:${catColors[a.cat]};opacity:0.3;">${a.id}</span>
+        </div>
+        <div class="p-5">
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide mb-3" style="background:${catColors[a.cat]}20;color:${catColors[a.cat]};">${catLabels[a.cat]}</span>
+          <h3 class="font-heading text-lg leading-snug mb-2" style="color:${textColor};">${a.title}</h3>
+          <p class="text-sm opacity-70 mb-4" style="color:${textColor};">${a.excerpt}</p>
+          <div class="flex items-center justify-between text-xs opacity-50" style="color:${textColor};">
+            <span>${a.date}</span><span>${a.read} lectura</span>
+          </div>
+          <div id="article-body-${a.id}" class="hidden mt-4 pt-4 text-sm leading-relaxed opacity-80" style="border-top:1px solid ${textColor}20;color:${textColor};">
+            Este es un artículo completo sobre "${a.title.toLowerCase()}". Aquí encontrarás información detallada, análisis profundo y consejos prácticos que puedes aplicar en tu día a día. El contenido ha sido creado con el objetivo de aportar valor real a nuestros lectores.
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function toggleArticle(id) {
+    const el = document.getElementById(`article-body-${id}`);
+    if (!el) return;
+    if (expandedArticle && expandedArticle !== id) {
+      const prev = document.getElementById(`article-body-${expandedArticle}`);
+      if (prev) prev.classList.add('hidden');
+    }
+    el.classList.toggle('hidden');
+    expandedArticle = el.classList.contains('hidden') ? null : id;
+  }
+
+  function filterArticles(cat, btn) {
+    currentFilter = cat;
+    document.querySelectorAll('#category-filters button').forEach(b => {
+      b.style.backgroundColor = surfaceColor;
+      b.style.color = textColor;
+    });
+    btn.style.backgroundColor = accentColor;
+    btn.style.color = bgColor;
+    renderArticles(cat);
+  }
+
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  }
+
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const msg = document.getElementById('subscribe-msg');
+    msg.textContent = '¡Gracias por suscribirte! Revisa tu correo para confirmar.';
+    msg.classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => msg.classList.add('hidden'), 4000);
+  }
+
+  function handleContact(e) {
+    e.preventDefault();
+    const msg = document.getElementById('contact-success');
+    msg.textContent = '¡Mensaje enviado con éxito! Te responderemos pronto.';
+    msg.classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => msg.classList.add('hidden'), 4000);
+  }
+
+  const policies = {
+    privacy: { title: 'Política de Privacidad', content: 'En Lumina nos comprometemos a proteger tu privacidad. Recopilamos únicamente la información necesaria para mejorar tu experiencia: correo electrónico (si te suscribes) y datos de navegación anónimos. No compartimos tu información con terceros sin tu consentimiento. Puedes solicitar la eliminación de tus datos en cualquier momento contactándonos.' },
+    terms: { title: 'Términos de Uso', content: 'Al acceder a Lumina, aceptas estos términos. El contenido publicado es propiedad de Lumina y está protegido por derechos de autor. Puedes compartir nuestros artículos citando la fuente. No está permitido reproducir contenido sin autorización. Nos reservamos el derecho de modificar estos términos en cualquier momento.' },
+    cookies: { title: 'Política de Cookies', content: 'Utilizamos cookies para mejorar tu experiencia de navegación. Las cookies esenciales permiten el funcionamiento del sitio. Las cookies analíticas nos ayudan a entender cómo usas el sitio. Puedes gestionar tus preferencias de cookies desde la configuración de tu navegador.' }
+  };
+
+  function showPolicy(type) {
+    const p = policies[type];
+    document.getElementById('policy-title').textContent = p.title;
+    document.getElementById('policy-content').textContent = p.content;
+    document.getElementById('policy-modal').classList.remove('hidden');
+  }
+  function closePolicyModal() {
+    document.getElementById('policy-modal').classList.add('hidden');
+  }
+
+  // --- ELEMENT SDK ---
+  const defaultConfig = {
+    site_title: 'Lumina',
+    site_tagline: 'Ideas que inspiran · Historias que conectan',
+    hero_title: 'El futuro del diseño digital en la era creativa',
+    hero_excerpt: 'Exploramos cómo las nuevas herramientas están transformando la manera en que creamos, colaboramos y damos vida a nuestras ideas.',
+    about_text: 'Somos un equipo apasionado por compartir ideas, tendencias y reflexiones sobre tecnología, creatividad y estilo de vida. Nuestro objetivo es inspirarte con contenido original y de calidad.',
+    footer_text: '© 2024 Lumina. Todos los derechos reservados.',
+    background_color: '#FAF7F2',
+    surface_color: '#E8E2D9',
+    text_color: '#2D2A26',
+    accent_color: '#C45D3E',
+    secondary_action_color: '#5A5650',
+    font_family: 'DM Serif Display',
+    font_size: 16
+  };
+
+  function applyConfig(config) {
+    const c = { ...defaultConfig, ...config };
+    bgColor = c.background_color;
+    surfaceColor = c.surface_color;
+    textColor = c.text_color;
+    accentColor = c.accent_color;
+    secondaryAction = c.secondary_action_color;
+
+    const app = document.getElementById('app');
+    app.style.backgroundColor = bgColor;
+
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = textColor;
+
+    // Nav
+    document.getElementById('nav-title').textContent = c.site_title;
+    document.getElementById('nav-title').style.color = textColor;
+    document.getElementById('logo-icon').style.backgroundColor = accentColor;
+    document.getElementById('logo-icon').textContent = c.site_title.charAt(0);
+    document.getElementById('site-header').style.borderColor = surfaceColor;
+
+    // Hero
+    document.getElementById('hero-title').textContent = c.hero_title;
+    document.getElementById('hero-title').style.color = textColor;
+    document.getElementById('hero-excerpt').textContent = c.hero_excerpt;
+    document.getElementById('hero-excerpt').style.color = textColor;
+    document.getElementById('hero-badge').style.backgroundColor = accentColor;
+    document.getElementById('hero-badge').style.color = bgColor;
+    document.querySelector('.hero-gradient').style.setProperty('--bg-color', bgColor);
+    document.querySelector('.hero-gradient').style.setProperty('--accent-color', accentColor);
+    document.querySelector('.hero-gradient button').style.backgroundColor = accentColor;
+    document.querySelector('.hero-gradient button').style.color = bgColor;
+
+    // Tagline
+    document.getElementById('tagline-bar').textContent = c.site_tagline;
+
+    // About
+    document.getElementById('about-text').textContent = c.about_text;
+    document.getElementById('about-text').style.color = textColor;
+
+    // Footer
+    document.getElementById('footer-brand').textContent = c.site_title;
+    document.getElementById('footer-text').textContent = c.footer_text;
+
+    // Font
+    const headingFont = `${c.font_family}, Georgia, serif`;
+    document.querySelectorAll('.font-heading').forEach(el => el.style.fontFamily = headingFont);
+
+    // Font size
+    const base = c.font_size;
+    document.querySelectorAll('p, .text-sm, .text-xs').forEach(el => {
+      if (el.classList.contains('text-xs')) el.style.fontSize = `${base * 0.75}px`;
+      else if (el.classList.contains('text-sm')) el.style.fontSize = `${base * 0.875}px`;
+      else el.style.fontSize = `${base}px`;
+    });
+
+    // Nav links style update
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.style.color = textColor;
+      l.setAttribute('onmouseover', `this.style.color='${accentColor}'`);
+      l.setAttribute('onmouseout', `this.style.color='${textColor}'`);
+    });
+    document.querySelectorAll('.nav-link').forEach(l => {
+      const after = document.createElement('style');
+      // handled via CSS variable below
+    });
+
+    // Re-render articles with updated colors
+    renderArticles(currentFilter);
+  }
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => applyConfig(config),
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['site_title', config.site_title || defaultConfig.site_title],
+      ['site_tagline', config.site_tagline || defaultConfig.site_tagline],
+      ['hero_title', config.hero_title || defaultConfig.hero_title],
+      ['hero_excerpt', config.hero_excerpt || defaultConfig.hero_excerpt],
+      ['about_text', config.about_text || defaultConfig.about_text],
+      ['footer_text', config.footer_text || defaultConfig.footer_text],
+    ])
+  });
+
+  // Initial render
+  renderArticles('all');
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0a5c5fe045b08a',t:'MTc3NDIzNjY2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
